@@ -1,0 +1,2168 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Rust Cookbook</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/style.css">
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="cookbook.html"><strong aria-hidden="true">1.</strong> Rust Cookbook</a></li><li class="chapter-item expanded "><a href="algos/intro.html"><strong aria-hidden="true">2.</strong> 实用算法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algos/randomness.html"><strong aria-hidden="true">2.1.</strong> 生成随机值</a></li><li class="chapter-item expanded "><a href="algos/sorting.html"><strong aria-hidden="true">2.2.</strong> Vec 排序</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> 命令行</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cmd/parsing.html"><strong aria-hidden="true">3.1.</strong> 参数解析</a></li><li class="chapter-item expanded "><a href="cmd/ansi.html"><strong aria-hidden="true">3.2.</strong> 终端输出格式化</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> 压缩</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="compression/tar.html"><strong aria-hidden="true">4.1.</strong> 使用.tar包</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> 并发</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cocurrency/threads.html"><strong aria-hidden="true">5.1.</strong> 线程</a></li><li class="chapter-item expanded "><a href="cocurrency/parallel.html"><strong aria-hidden="true">5.2.</strong> 使用rayon并行处理数据</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> 密码学</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cryptography/hashing.html"><strong aria-hidden="true">6.1.</strong> 哈希</a></li><li class="chapter-item expanded "><a href="cryptography/encryption.html"><strong aria-hidden="true">6.2.</strong> 加密</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> 数据结构</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="datastructures/bitfield.html"><strong aria-hidden="true">7.1.</strong> 位字段</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> 数据库</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="database/sqlite.html"><strong aria-hidden="true">8.1.</strong> SQLite</a></li><li class="chapter-item expanded "><a href="database/postgres.html"><strong aria-hidden="true">8.2.</strong> Postgres</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> 日期和时间</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="datetime/duration.html"><strong aria-hidden="true">9.1.</strong> 时间计算和转换</a></li><li class="chapter-item expanded "><a href="datetime/parsing.html"><strong aria-hidden="true">9.2.</strong> 解析和显示</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> 开发者工具</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="devtools/log.html"><strong aria-hidden="true">10.1.</strong> 日志</a></li><li class="chapter-item expanded "><a href="devtools/config-log.html"><strong aria-hidden="true">10.2.</strong> 配置日志</a></li><li class="chapter-item expanded "><a href="devtools/version.html"><strong aria-hidden="true">10.3.</strong> 版本号</a></li><li class="chapter-item expanded "><a href="devtools/build-tools.html"><strong aria-hidden="true">10.4.</strong> 构建时工具</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> 编解码</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="encoding/strings.html"><strong aria-hidden="true">11.1.</strong> 字符集</a></li><li class="chapter-item expanded "><a href="encoding/csv.html"><strong aria-hidden="true">11.2.</strong> CSV</a></li><li class="chapter-item expanded "><a href="encoding/structured.html"><strong aria-hidden="true">11.3.</strong> 结构化数据</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.</strong> 错误处理</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="errors/error-chain.html"><strong aria-hidden="true">12.1.</strong> error-chain</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">13.</strong> 文件操作</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="files/read-write.html"><strong aria-hidden="true">13.1.</strong> 读写</a></li><li class="chapter-item expanded "><a href="files/dir.html"><strong aria-hidden="true">13.2.</strong> 目录</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">14.</strong> 硬件信息</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hardware/processor.html"><strong aria-hidden="true">14.1.</strong> 处理器</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">15.</strong> 内存管理</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="memory/global-vars.html"><strong aria-hidden="true">15.1.</strong> 全局变量</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">16.</strong> 网络协议</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="protocols/tcpip.html"><strong aria-hidden="true">16.1.</strong> TCP/IP</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust Cookbook</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/sunface/rust-cookbook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <!-- Page table of contents -->
+                    <div class="sidetoc"><nav class="pagetoc"></nav></div>
+                    <main>
+                        <h1 id="rust-cookbook"><a class="header" href="#rust-cookbook">Rust Cookbook</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="实用算法"><a class="header" href="#实用算法">实用算法</a></h1>
+<p>本章将收集一些在实战中经常使用的算法 API。</p>
+<blockquote>
+<p>Note: 这里没有具体的算法实现，都是关于如何应用的</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="生成随机值"><a class="header" href="#生成随机值">生成随机值</a></h1>
+<h3 id="生成随机数"><a class="header" href="#生成随机数">生成随机数</a></h3>
+<p>使用 <a href="https://docs.rs/rand/*/rand/fn.thread_rng.html">rand::thread_rng</a> 可以获取一个随机数生成器 <a href="https://docs.rs/rand/0.8.5/rand/trait.Rng.html">rand::Rng</a> ，该生成器需要在每个线程都初始化一个。</p>
+<p>整数的随机分布范围等于类型的取值范围，但是浮点数只分布在 <code>[0, 1)</code> 区间内。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use rand::Rng;
+
+fn main() {
+    let mut rng = rand::thread_rng();
+
+    let n1: u8 = rng.gen();
+    let n2: u16 = rng.gen();
+    println!(&quot;Random u8: {}&quot;, n1);
+    println!(&quot;Random u16: {}&quot;, n2);
+    println!(&quot;Random u32: {}&quot;, rng.gen::&lt;u32&gt;());
+    println!(&quot;Random i32: {}&quot;, rng.gen::&lt;i32&gt;());
+    println!(&quot;Random float: {}&quot;, rng.gen::&lt;f64&gt;());
+}
+</code></pre></pre>
+<h3 id="指定范围生成随机数"><a class="header" href="#指定范围生成随机数">指定范围生成随机数</a></h3>
+<p>使用 <a href="https://rust-lang-nursery.github.io/rust-cookbook/algorithms/randomness.html">Rng::gen_range</a> 生成 [0, 10) 区间内的随机数( 右开区间，不包括 <code>10</code> )。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use rand::Rng;
+
+fn main() {
+    let mut rng = rand::thread_rng();
+    println!(&quot;Integer: {}&quot;, rng.gen_range(0..10));
+    println!(&quot;Float: {}&quot;, rng.gen_range(0.0..10.0));
+}
+</code></pre></pre>
+<p><a href="https://docs.rs/rand/*/rand/distributions/uniform/struct.Uniform.html">Uniform</a> 可以用于生成<ruby>均匀分布<rt>uniform distribution</rt></ruby>的随机数。当需要在同一个范围内重复生成随机数时，该方法虽然和之前的方法效果一样，但会更快一些。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use rand::distributions::{Distribution, Uniform};
+
+fn main() {
+    let mut rng = rand::thread_rng();
+    let die = Uniform::from(1..7);
+
+    loop {
+        let throw = die.sample(&amp;mut rng);
+        println!(&quot;Roll the die: {}&quot;, throw);
+        if throw == 6 {
+            break;
+        }
+    }
+}
+</code></pre></pre>
+<h3 id="使用指定分布来生成随机数"><a class="header" href="#使用指定分布来生成随机数">使用指定分布来生成随机数</a></h3>
+<p>默认情况下，<code>rand</code> 包使用均匀分布来生成随机数，而 <a href="https://docs.rs/rand_distr/*/rand_distr/index.html">rand_distr</a> 包提供了其它类型的分布方式。</p>
+<p>首先，你需要获取想要使用的分布的实例，然后在 <a href="https://docs.rs/rand/*/rand/trait.Rng.html">rand::Rng</a> 的帮助下使用 <a href="https://docs.rs/rand/*/rand/distributions/trait.Distribution.html#tymethod.sample">Distribution::sample</a> 对该实例进行取样。</p>
+<p>如果想要查询可用的分布列表，可以访问<a href="https://docs.rs/rand_distr/*/rand_distr/index.html">这里</a>，下面的示例中我们将使用 <a href="https://docs.rs/rand_distr/0.4.3/rand_distr/struct.Normal.html">Normal</a> 分布:</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use rand_distr::{Distribution, Normal, NormalError};
+use rand::thread_rng;
+
+fn main() -&gt; Result&lt;(), NormalError&gt; {
+    let mut rng = thread_rng();
+    let normal = Normal::new(2.0, 3.0)?;
+    let v = normal.sample(&amp;mut rng);
+    println!(&quot;{} is from a N(2, 9) distribution&quot;, v);
+    Ok(())
+}
+</code></pre></pre>
+<h3 id="在自定义类型中生成随机值"><a class="header" href="#在自定义类型中生成随机值">在自定义类型中生成随机值</a></h3>
+<p>使用 <a href="https://docs.rs/rand/*/rand/distributions/trait.Distribution.html">Distribution</a> 特征包裹我们的自定义类型，并为 <a href="https://docs.rs/rand/*/rand/distributions/struct.Standard.html">Standard</a> 实现该特征，可以为自定义类型的指定字段生成随机数。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use rand::Rng;
+use rand::distributions::{Distribution, Standard};
+
+#[derive(Debug)]
+struct Point {
+    x: i32,
+    y: i32,
+}
+
+impl Distribution&lt;Point&gt; for Standard {
+    fn sample&lt;R: Rng + ?Sized&gt;(&amp;self, rng: &amp;mut R) -&gt; Point {
+        let (rand_x, rand_y) = rng.gen();
+        Point {
+            x: rand_x,
+            y: rand_y,
+        }
+    }
+}
+
+fn main() {
+    let mut rng = rand::thread_rng();
+
+    // 生成一个随机的 Point
+    let rand_point: Point = rng.gen();
+    println!(&quot;Random Point: {:?}&quot;, rand_point);
+
+    // 通过类型暗示( hint )生成一个随机的元组
+    let rand_tuple = rng.gen::&lt;(i32, bool, f64)&gt;();
+    println!(&quot;Random tuple: {:?}&quot;, rand_tuple);
+}
+</code></pre></pre>
+<h3 id="生成随机的字符串a-z-a-z-0-9"><a class="header" href="#生成随机的字符串a-z-a-z-0-9">生成随机的字符串(A-Z, a-z, 0-9)</a></h3>
+<p>通过 <a href="https://docs.rs/rand/0.8.5/rand/distributions/struct.Alphanumeric.html">Alphanumeric</a> 采样来生成随机的 ASCII 字符串，包含从 <code>A-Z, a-z, 0-9</code> 的字符。</p>
+<pre><pre class="playground"><code class="language-rust editble edition2021">use rand::{thread_rng, Rng};
+use rand::distributions::Alphanumeric;
+
+fn main() {
+    let rand_string: String = thread_rng()
+        .sample_iter(&amp;Alphanumeric)
+        .take(30)
+        .map(char::from)
+        .collect();
+
+    println!(&quot;{}&quot;, rand_string);
+}
+</code></pre></pre>
+<h3 id="生成随机的字符串-用户指定-ascii-字符-"><a class="header" href="#生成随机的字符串-用户指定-ascii-字符-">生成随机的字符串( 用户指定 ASCII 字符 )</a></h3>
+<p>通过 <a href="https://docs.rs/rand/0.8.5/rand/trait.Rng.html#method.gen_range">gen_string</a> 生成随机的 ASCII 字符串，包含用户指定的字符。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">fn main() {
+    use rand::Rng;
+    const CHARSET: &amp;[u8] = b&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ\
+                            abcdefghijklmnopqrstuvwxyz\
+                            0123456789)(*&amp;^%$#@!~&quot;;
+    const PASSWORD_LEN: usize = 30;
+    let mut rng = rand::thread_rng();
+
+    let password: String = (0..PASSWORD_LEN)
+        .map(|_| {
+            let idx = rng.gen_range(0..CHARSET.len());
+            CHARSET[idx] as char
+        })
+        .collect();
+
+    println!(&quot;{:?}&quot;, password);
+}
+</code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="vector-排序"><a class="header" href="#vector-排序">Vector 排序</a></h2>
+<h3 id="对整数-vector-排序"><a class="header" href="#对整数-vector-排序">对整数 Vector 排序</a></h3>
+<p>以下示例使用 <a href="https://doc.rust-lang.org/std/vec/struct.Vec.html#method.sort">Vec::sort</a> 来排序，如果大家希望获得更高的性能，可以使用 <a href="https://doc.rust-lang.org/std/vec/struct.Vec.html#method.sort_unstable">Vec::sort_unstable</a>，但是该方法无法保留相等元素的顺序。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">fn main() {
+    let mut vec = vec![1, 5, 10, 2, 15];
+    
+    vec.sort();
+
+    assert_eq!(vec, vec![1, 2, 5, 10, 15]);
+}
+</code></pre></pre>
+<h3 id="对浮点数-vector-排序"><a class="header" href="#对浮点数-vector-排序">对浮点数 Vector 排序</a></h3>
+<p>浮点数数组可以使用 <a href="https://doc.rust-lang.org/std/primitive.slice.html#method.sort_by">Vec::sort_by</a> 和 <a href="https://doc.rust-lang.org/std/cmp/trait.PartialOrd.html#tymethod.partial_cmp">PartialOrd::partial_cmp</a> 进行排序。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">fn main() {
+    let mut vec = vec![1.1, 1.15, 5.5, 1.123, 2.0];
+
+    vec.sort_by(|a, b| a.partial_cmp(b).unwrap());
+
+    assert_eq!(vec, vec![1.1, 1.123, 1.15, 2.0, 5.5]);
+}
+</code></pre></pre>
+<h3 id="对结构体-vector-排序"><a class="header" href="#对结构体-vector-排序">对结构体 Vector 排序</a></h3>
+<p>以下示例中的结构体 <code>Person</code> 将实现基于字段 <code>name</code> 和 <code>age</code> 的自然排序。为了让 <code>Person</code> 变为可排序的，我们需要为其派生 <code>Eq、PartialEq、Ord、PartialOrd</code> 特征，关于这几个特征的详情，请见<a href="https://course.rs/advance/confonding/eq.html">这里</a>。</p>
+<p>当然，还可以使用 <a href="https://doc.rust-lang.org/std/vec/struct.Vec.html#method.sort_by">vec:sort_by</a> 方法配合一个自定义比较函数，只按照 <code>age</code> 的维度对 <code>Person</code> 数组排序。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">#[derive(Debug, Eq, Ord, PartialEq, PartialOrd)]
+struct Person {
+    name: String,
+    age: u32
+}
+
+impl Person {
+    pub fn new(name: String, age: u32) -&gt; Self {
+        Person {
+            name,
+            age
+        }
+    }
+}
+
+fn main() {
+    let mut people = vec![
+        Person::new(&quot;Zoe&quot;.to_string(), 25),
+        Person::new(&quot;Al&quot;.to_string(), 60),
+        Person::new(&quot;John&quot;.to_string(), 1),
+    ];
+
+    // 通过派生后的自然顺序(Name and age)排序
+    people.sort();
+
+    assert_eq!(
+        people,
+        vec![
+            Person::new(&quot;Al&quot;.to_string(), 60),
+            Person::new(&quot;John&quot;.to_string(), 1),
+            Person::new(&quot;Zoe&quot;.to_string(), 25),
+        ]);
+
+    // 只通过 age 排序
+    people.sort_by(|a, b| b.age.cmp(&amp;a.age));
+
+    assert_eq!(
+        people,
+        vec![
+            Person::new(&quot;Al&quot;.to_string(), 60),
+            Person::new(&quot;Zoe&quot;.to_string(), 25),
+            Person::new(&quot;John&quot;.to_string(), 1),
+        ]);
+
+}
+</code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="参数解析"><a class="header" href="#参数解析">参数解析</a></h1>
+<h2 id="clap"><a class="header" href="#clap">Clap</a></h2>
+<p>下面的程序给出了使用 <code>clap</code> 来解析命令行参数的样式结构，如果大家想了解更多，在 <code>clap</code> <a href="https://docs.rs/clap/">文档</a>中还给出了另外两种初始化一个应用的方式。</p>
+<p>在下面的构建中，<code>value_of</code> 将获取通过 <code>with_name</code> 解析出的值。<code>short</code> 和 <code>long</code> 用于设置用户输入的长短命令格式，例如短命令 <code>-f</code> 和长命令 <code>--file</code>。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use clap::{Arg, App};
+
+fn main() {
+    let matches = App::new(&quot;My Test Program&quot;)
+        .version(&quot;0.1.0&quot;)
+        .author(&quot;Hackerman Jones &lt;hckrmnjones@hack.gov&gt;&quot;)
+        .about(&quot;Teaches argument parsing&quot;)
+        .arg(Arg::with_name(&quot;file&quot;)
+                 .short(&quot;f&quot;)
+                 .long(&quot;file&quot;)
+                 .takes_value(true)
+                 .help(&quot;A cool file&quot;))
+        .arg(Arg::with_name(&quot;num&quot;)
+                 .short(&quot;n&quot;)
+                 .long(&quot;number&quot;)
+                 .takes_value(true)
+                 .help(&quot;Five less than your favorite number&quot;))
+        .get_matches();
+
+    let myfile = matches.value_of(&quot;file&quot;).unwrap_or(&quot;input.txt&quot;);
+    println!(&quot;The file passed is: {}&quot;, myfile);
+
+    let num_str = matches.value_of(&quot;num&quot;);
+    match num_str {
+        None =&gt; println!(&quot;No idea what your favorite number is.&quot;),
+        Some(s) =&gt; {
+            match s.parse::&lt;i32&gt;() {
+                Ok(n) =&gt; println!(&quot;Your favorite number must be {}.&quot;, n + 5),
+                Err(_) =&gt; println!(&quot;That's not a number! {}&quot;, s),
+            }
+        }
+    }
+}
+</code></pre></pre>
+<p><code>clap</code> 针对上面提供的构建样式，会自动帮我们生成相应的使用方式说明。例如，上面代码生成的使用说明如下：</p>
+<pre><code class="language-shell">My Test Program 0.1.0
+Hackerman Jones &lt;hckrmnjones@hack.gov&gt;
+Teaches argument parsing
+
+USAGE:
+    testing [OPTIONS]
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+OPTIONS:
+    -f, --file &lt;file&gt;     A cool file
+    -n, --number &lt;num&gt;    Five less than your favorite number
+</code></pre>
+<p>最后，再使用一些参数来运行下我们的代码:</p>
+<pre><code class="language-shell">$ cargo run -- -f myfile.txt -n 251
+The file passed is: myfile.txt
+Your favorite number must be 256.
+</code></pre>
+<h2 id="structopt"><a class="header" href="#structopt">Structopt</a></h2>
+<p>@todo</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ansi-终端"><a class="header" href="#ansi-终端">ANSI 终端</a></h1>
+<p><a href="https://crates.io/crates/ansi_term">ansi_term</a> 包可以帮我们控制终端上的输出样式，例如使用颜色文字、控制输出格式等，当然，前提是在 ANSI 终端上。</p>
+<p><code>ansi_term</code> 中有两个主要数据结构：<a href="https://docs.rs/ansi_term/0.12.1/ansi_term/type.ANSIString.html">ANSIString</a> 和 <a href="https://docs.rs/ansi_term/0.12.1/ansi_term/struct.Style.html">Style</a>。</p>
+<p><code>Style</code> 用于控制样式：颜色、加粗、闪烁等，而前者是一个带有样式的字符串。</p>
+<h2 id="颜色字体"><a class="header" href="#颜色字体">颜色字体</a></h2>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use ansi_term::Colour;
+
+fn main() {
+    println!(&quot;This is {} in color, {} in color and {} in color&quot;,
+             Colour::Red.paint(&quot;red&quot;),
+             Colour::Blue.paint(&quot;blue&quot;),
+             Colour::Green.paint(&quot;green&quot;));
+}
+</code></pre></pre>
+<h2 id="加粗字体"><a class="header" href="#加粗字体">加粗字体</a></h2>
+<p>比颜色复杂的样式构建需要使用 <code>Style</code> 结构体:</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use ansi_term::Style;
+
+fn main() {
+    println!(&quot;{} and this is not&quot;,
+             Style::new().bold().paint(&quot;This is Bold&quot;));
+}
+</code></pre></pre>
+<h2 id="加粗和颜色"><a class="header" href="#加粗和颜色">加粗和颜色</a></h2>
+<p><code>Colour</code> 实现了很多跟 <code>Style</code> 类似的函数，因此可以实现链式调用。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use ansi_term::Colour;
+use ansi_term::Style;
+
+fn main(){
+    println!(&quot;{}, {} and {}&quot;,
+             Colour::Yellow.paint(&quot;This is colored&quot;),
+             Style::new().bold().paint(&quot;this is bold&quot;),
+             // Colour 也可以使用 bold 方法进行加粗
+             Colour::Yellow.bold().paint(&quot;this is bold and colored&quot;));
+}
+</code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="使用tar包"><a class="header" href="#使用tar包">使用tar包</a></h1>
+<h2 id="解压-tar-包"><a class="header" href="#解压-tar-包">解压 tar 包</a></h2>
+<p>以下代码将解压缩( <a href="https://docs.rs/flate2/*/flate2/read/struct.GzDecoder.html">GzDecoder</a> )当前目录中的 <code>archive.tar.gz</code> ，并将所有文件抽取出( <a href="https://docs.rs/tar/*/tar/struct.Archive.html#method.unpack">Archive::unpack</a> )来后当入到当前目录中。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use std::fs::File;
+use flate2::read::GzDecoder;
+use tar::Archive;
+
+fn main() -&gt; Result&lt;(), std::io::Error&gt; {
+    let path = &quot;archive.tar.gz&quot;;
+
+    let tar_gz = File::open(path)?;
+    let tar = GzDecoder::new(tar_gz);
+    let mut archive = Archive::new(tar);
+    archive.unpack(&quot;.&quot;)?;
+
+    Ok(())
+}
+</code></pre></pre>
+<h2 id="将目录压缩成-tar-包"><a class="header" href="#将目录压缩成-tar-包">将目录压缩成 tar 包</a></h2>
+<p>以下代码将 <code>/var/log</code> 目录压缩成 <code>archive.tar.gz</code>:</p>
+<ul>
+<li>创建一个 <a href="https://doc.rust-lang.org/std/fs/struct.File.html">File</a> 文件，并使用 <a href="https://docs.rs/flate2/*/flate2/write/struct.GzEncoder.html">GzEncoder</a> 和 <a href="https://docs.rs/tar/*/tar/struct.Builder.html">tar::Builder</a> 对其进行包裹</li>
+<li>通过 <a href="https://docs.rs/tar/*/tar/struct.Builder.html#method.append_dir_all">Builder::append_dir_all</a> 将 <code>/var/log</code> 目录下的所有内容添加到压缩文件中，该文件在 <code>backup/logs</code> 目录下。</li>
+<li><a href="https://docs.rs/flate2/*/flate2/write/struct.GzEncoder.html">GzEncoder</a> 负责在写入压缩文件 <code>archive.tar.gz</code> 之前对数据进行压缩。</li>
+</ul>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use std::fs::File;
+use flate2::Compression;
+use flate2::write::GzEncoder;
+
+fn main() -&gt; Result&lt;(), std::io::Error&gt; {
+    let tar_gz = File::create(&quot;archive.tar.gz&quot;)?;
+    let enc = GzEncoder::new(tar_gz, Compression::default());
+    let mut tar = tar::Builder::new(enc);
+    tar.append_dir_all(&quot;backup/logs&quot;, &quot;/var/log&quot;)?;
+    Ok(())
+}
+</code></pre></pre>
+<h2 id="解压的同时删除指定的文件前缀"><a class="header" href="#解压的同时删除指定的文件前缀">解压的同时删除指定的文件前缀</a></h2>
+<p>遍历目录中的文件 <a href="https://docs.rs/tar/*/tar/struct.Archive.html#method.entries">Archive::entries</a>，若解压前的文件名包含 <code>bundle/logs</code> 前缀，需要将前缀从文件名移除( <a href="https://doc.rust-lang.org/std/path/struct.Path.html#method.strip_prefix">Path::strip_prefix</a> )后，再解压。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use std::fs::File;
+use std::path::PathBuf;
+use flate2::read::GzDecoder;
+use tar::Archive;
+
+fn main() -&gt; Result&lt;()&gt; {
+    let file = File::open(&quot;archive.tar.gz&quot;)?;
+    let mut archive = Archive::new(GzDecoder::new(file));
+    let prefix = &quot;bundle/logs&quot;;
+
+    println!(&quot;Extracted the following files:&quot;);
+    archive
+        .entries()? // 获取压缩档案中的文件条目列表
+        .filter_map(|e| e.ok())
+        // 对每个文件条目进行 map 处理
+        .map(|mut entry| -&gt; Result&lt;PathBuf&gt; {
+            // 将文件路径名中的前缀移除，获取一个新的路径名
+            let path = entry.path()?.strip_prefix(prefix)?.to_owned();
+            // 将内容解压到新的路径名中
+            entry.unpack(&amp;path)?;
+            Ok(path)
+        })
+        .filter_map(|e| e.ok())
+        .for_each(|x| println!(&quot;&gt; {}&quot;, x.display()));
+
+    Ok(())
+}
+</code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="线程"><a class="header" href="#线程">线程</a></h1>
+<h3 id="生成一个临时性的线程"><a class="header" href="#生成一个临时性的线程">生成一个临时性的线程</a></h3>
+<p>下面例子用到了 <a href="cocurrency/cookbook/cocurrency/intro.html">crossbeam</a> 包，它提供了非常实用的、用于并发和并行编程的数据结构和函数。</p>
+<p><a href="https://docs.rs/crossbeam/*/crossbeam/thread/struct.Scope.html#method.spawn">Scope::spawn</a> 会生成一个被限定了作用域的线程，该线程最大的特点就是：它会在传给 <a href="https://docs.rs/crossbeam/0.8.1/crossbeam/fn.scope.html">crossbeam::scope</a> 的闭包函数返回前先行结束。得益于这个特点，子线程的创建使用就像是本地闭包函数调用，因此生成的线程内部可以使用外部环境中的变量！</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">fn main() {
+    let arr = &amp;[1, 25, -4, 10];
+    let max = find_max(arr);
+    assert_eq!(max, Some(25));
+}
+
+// 将数组分成两个部分，并使用新的线程对它们进行处理
+fn find_max(arr: &amp;[i32]) -&gt; Option&lt;i32&gt; {
+    const THRESHOLD: usize = 2;
+  
+    if arr.len() &lt;= THRESHOLD {
+        return arr.iter().cloned().max();
+    }
+
+    let mid = arr.len() / 2;
+    let (left, right) = arr.split_at(mid);
+  
+    crossbeam::scope(|s| {
+        let thread_l = s.spawn(|_| find_max(left));
+        let thread_r = s.spawn(|_| find_max(right));
+  
+        let max_l = thread_l.join().unwrap()?;
+        let max_r = thread_r.join().unwrap()?;
+  
+        Some(max_l.max(max_r))
+    }).unwrap()
+}
+</code></pre></pre>
+<h3 id="创建并行流水线"><a class="header" href="#创建并行流水线">创建并行流水线</a></h3>
+<p>下面我们使用 <a href="https://docs.rs/crossbeam/latest/crossbeam/">crossbeam</a> 和 <a href="https://docs.rs/crossbeam-channel/*/crossbeam_channel/index.html">crossbeam-channel</a> 来创建一个并行流水线：流水线的两端分别是数据源和数据下沉( sink )，在流水线中间，有两个工作线程会从源头接收数据，对数据进行并行处理，最后将数据下沉。</p>
+<ul>
+<li>消息通道( channel )是 <a href="https://docs.rs/crossbeam-channel/0.5.4/crossbeam_channel/fn.bounded.html">crossbeam_channel::bounded</a>，它只能缓存一条消息。当缓存满后，发送者继续调用 [crossbeam_channel::Sender::send] 发送消息时会阻塞，直到一个工作线程( 消费者 ) 拿走这条消息</li>
+<li>消费者获取消息时先到先得的策略，因此两个工作线程只有一个能取到消息，保证消息不会被重复消费、处理</li>
+<li>通过迭代器 <a href="https://docs.rs/crossbeam-channel/*/crossbeam_channel/struct.Receiver.html#method.iter">crossbeam_channel::Receiver::iter</a> 读取消息会阻塞当前线程，直到新消息的到来或 channel 关闭</li>
+<li>channel 只有在所有的发送者或消费者关闭后，才能被关闭。而其中一个消费者 <code>rcv2</code> 处于阻塞读取状态，无比被关闭，因此我们必须要关闭所有发送者: <code>drop(snd1);</code>  <code>drop(snd2)</code> ，这样 channel 关闭后，主线程的 <code>rcv2</code> 才能从阻塞状态退出，最后整个程序结束。大家还是迷惑的话，可以看看这篇<a href="https://course.rs/practice/pitfalls/main-with-channel-blocked.html">文章</a>。</li>
+</ul>
+<pre><pre class="playground"><code class="language-rust editable edition2021">extern crate crossbeam;
+extern crate crossbeam_channel;
+
+use std::thread;
+use std::time::Duration;
+use crossbeam_channel::bounded;
+
+fn main() {
+    let (snd1, rcv1) = bounded(1);
+    let (snd2, rcv2) = bounded(1);
+    let n_msgs = 4;
+    let n_workers = 2;
+
+    crossbeam::scope(|s| {
+        // 生产者线程
+        s.spawn(|_| {
+            for i in 0..n_msgs {
+                snd1.send(i).unwrap();
+                println!(&quot;Source sent {}&quot;, i);
+            }
+ 
+            // 关闭其中一个发送者 snd1
+            // 该关闭操作对于结束最后的循环是必须的
+            drop(snd1);
+        });
+
+        // 通过两个线程并行处理
+        for _ in 0..n_workers {
+            // 从数据源接收数据，然后发送到下沉端
+            let (sendr, recvr) = (snd2.clone(), rcv1.clone());
+            // 生成单独的工作线程
+            s.spawn(move |_| {
+            thread::sleep(Duration::from_millis(500));
+                // 等待通道的关闭
+                for msg in recvr.iter() {
+                    println!(&quot;Worker {:?} received {}.&quot;,
+                             thread::current().id(), msg);
+                    sendr.send(msg * 2).unwrap();
+                }
+            });
+        }
+        // 关闭通道，如果不关闭，下沉端将永远无法结束循环
+        drop(snd2);
+
+        // 下沉端
+        for msg in rcv2.iter() {
+            println!(&quot;Sink received {}&quot;, msg);
+        }
+    }).unwrap();
+}
+</code></pre></pre>
+<h3 id="线程间传递数据"><a class="header" href="#线程间传递数据">线程间传递数据</a></h3>
+<p>下面我们来看看 <a href="https://docs.rs/crossbeam-channel/*/crossbeam_channel/index.html">crossbeam-channel</a> 的单生产者单消费者( SPSC ) 使用场景。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use std::{thread, time};
+use crossbeam_channel::unbounded;
+
+fn main() {
+    // unbounded 意味着 channel 可以存储任意多的消息
+    let (snd, rcv) = unbounded();
+    let n_msgs = 5;
+    crossbeam::scope(|s| {
+        s.spawn(|_| {
+            for i in 0..n_msgs {
+                snd.send(i).unwrap();
+                thread::sleep(time::Duration::from_millis(100));
+            }
+        });
+    }).unwrap();
+    for _ in 0..n_msgs {
+        let msg = rcv.recv().unwrap();
+        println!(&quot;Received {}&quot;, msg);
+    }
+}
+</code></pre></pre>
+<h3 id="维护全局可变的状态"><a class="header" href="#维护全局可变的状态">维护全局可变的状态</a></h3>
+<p><a href="cocurrency/">lazy_static</a> 会创建一个全局的静态引用( static ref )，该引用使用了 <code>Mutex</code> 以支持可变性，因此我们可以在代码中对其进行修改。<code>Mutex</code> 能保证该全局状态同时只能被一个线程所访问。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use error_chain::error_chain;
+use lazy_static::lazy_static;
+use std::sync::Mutex;
+
+error_chain!{ }
+
+lazy_static! {
+    static ref FRUIT: Mutex&lt;Vec&lt;String&gt;&gt; = Mutex::new(Vec::new());
+}
+
+fn insert(fruit: &amp;str) -&gt; Result&lt;()&gt; {
+    let mut db = FRUIT.lock().map_err(|_| &quot;Failed to acquire MutexGuard&quot;)?;
+    db.push(fruit.to_string());
+    Ok(())
+}
+
+fn main() -&gt; Result&lt;()&gt; {
+    insert(&quot;apple&quot;)?;
+    insert(&quot;orange&quot;)?;
+    insert(&quot;peach&quot;)?;
+    {
+        let db = FRUIT.lock().map_err(|_| &quot;Failed to acquire MutexGuard&quot;)?;
+
+        db.iter().enumerate().for_each(|(i, item)| println!(&quot;{}: {}&quot;, i, item));
+    }
+    insert(&quot;grape&quot;)?;
+    Ok(())
+}
+</code></pre></pre>
+<h3 id="并行计算-iso-文件的-sha256"><a class="header" href="#并行计算-iso-文件的-sha256">并行计算 iso 文件的 SHA256</a></h3>
+<p>下面的示例将为当前目录中的每一个 .iso 文件都计算一个 SHA256 sum。其中线程池中会初始化和 CPU 核心数一致的线程数，其中核心数是通过 <a href="https://docs.rs/num_cpus/*/num_cpus/fn.get.html">num_cpus::get</a> 函数获取。</p>
+<p><code>Walkdir::new</code> 可以遍历当前的目录，然后调用 <code>execute</code> 来执行读操作和 SHA256 哈希计算。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">
+use walkdir::WalkDir;
+use std::fs::File;
+use std::io::{BufReader, Read, Error};
+use std::path::Path;
+use threadpool::ThreadPool;
+use std::sync::mpsc::channel;
+use ring::digest::{Context, Digest, SHA256};
+
+// Verify the iso extension
+fn is_iso(entry: &amp;Path) -&gt; bool {
+    match entry.extension() {
+        Some(e) if e.to_string_lossy().to_lowercase() == &quot;iso&quot; =&gt; true,
+        _ =&gt; false,
+    }
+}
+
+fn compute_digest&lt;P: AsRef&lt;Path&gt;&gt;(filepath: P) -&gt; Result&lt;(Digest, P), Error&gt; {
+    let mut buf_reader = BufReader::new(File::open(&amp;filepath)?);
+    let mut context = Context::new(&amp;SHA256);
+    let mut buffer = [0; 1024];
+
+    loop {
+        let count = buf_reader.read(&amp;mut buffer)?;
+        if count == 0 {
+            break;
+        }
+        context.update(&amp;buffer[..count]);
+    }
+
+    Ok((context.finish(), filepath))
+}
+
+fn main() -&gt; Result&lt;(), Error&gt; {
+    let pool = ThreadPool::new(num_cpus::get());
+
+    let (tx, rx) = channel();
+
+    for entry in WalkDir::new(&quot;/home/user/Downloads&quot;)
+        .follow_links(true)
+        .into_iter()
+        .filter_map(|e| e.ok())
+        .filter(|e| !e.path().is_dir() &amp;&amp; is_iso(e.path())) {
+            let path = entry.path().to_owned();
+            let tx = tx.clone();
+            pool.execute(move || {
+                let digest = compute_digest(path);
+                tx.send(digest).expect(&quot;Could not send data!&quot;);
+            });
+        }
+
+    drop(tx);
+    for t in rx.iter() {
+        let (sha, path) = t?;
+        println!(&quot;{:?} {:?}&quot;, sha, path);
+    }
+    Ok(())
+}
+</code></pre></pre>
+<h3 id="使用线程池来绘制分形"><a class="header" href="#使用线程池来绘制分形">使用线程池来绘制分形</a></h3>
+<p>下面例子中将基于 <a href="cocurrency/">Julia Set</a> 来绘制一个分形图片，其中使用到了线程池来做分布式计算。</p>
+<img src="https://cloud.githubusercontent.com/assets/221000/26546700/9be34e80-446b-11e7-81dc-dd9871614ea1.png" />
+<pre><pre class="playground"><code class="language-rust edtiable edition2021"><span class="boring">use error_chain::error_chain;
+</span>use std::sync::mpsc::{channel, RecvError};
+use threadpool::ThreadPool;
+use num::complex::Complex;
+use image::{ImageBuffer, Pixel, Rgb};
+
+<span class="boring">
+</span><span class="boring">error_chain! {
+</span><span class="boring">    foreign_links {
+</span><span class="boring">        MpscRecv(RecvError);
+</span><span class="boring">        Io(std::io::Error);
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">// Function converting intensity values to RGB
+</span><span class="boring">// Based on http://www.efg2.com/Lab/ScienceAndEngineering/Spectra.htm
+</span><span class="boring">fn wavelength_to_rgb(wavelength: u32) -&gt; Rgb&lt;u8&gt; {
+</span><span class="boring">    let wave = wavelength as f32;
+</span><span class="boring">
+</span><span class="boring">    let (r, g, b) = match wavelength {
+</span><span class="boring">        380..=439 =&gt; ((440. - wave) / (440. - 380.), 0.0, 1.0),
+</span><span class="boring">        440..=489 =&gt; (0.0, (wave - 440.) / (490. - 440.), 1.0),
+</span><span class="boring">        490..=509 =&gt; (0.0, 1.0, (510. - wave) / (510. - 490.)),
+</span><span class="boring">        510..=579 =&gt; ((wave - 510.) / (580. - 510.), 1.0, 0.0),
+</span><span class="boring">        580..=644 =&gt; (1.0, (645. - wave) / (645. - 580.), 0.0),
+</span><span class="boring">        645..=780 =&gt; (1.0, 0.0, 0.0),
+</span><span class="boring">        _ =&gt; (0.0, 0.0, 0.0),
+</span><span class="boring">    };
+</span><span class="boring">
+</span><span class="boring">    let factor = match wavelength {
+</span><span class="boring">        380..=419 =&gt; 0.3 + 0.7 * (wave - 380.) / (420. - 380.),
+</span><span class="boring">        701..=780 =&gt; 0.3 + 0.7 * (780. - wave) / (780. - 700.),
+</span><span class="boring">        _ =&gt; 1.0,
+</span><span class="boring">    };
+</span><span class="boring">
+</span><span class="boring">    let (r, g, b) = (normalize(r, factor), normalize(g, factor), normalize(b, factor));
+</span><span class="boring">    Rgb::from_channels(r, g, b, 0)
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">// Maps Julia set distance estimation to intensity values
+</span><span class="boring">fn julia(c: Complex&lt;f32&gt;, x: u32, y: u32, width: u32, height: u32, max_iter: u32) -&gt; u32 {
+</span><span class="boring">    let width = width as f32;
+</span><span class="boring">    let height = height as f32;
+</span><span class="boring">
+</span><span class="boring">    let mut z = Complex {
+</span><span class="boring">        // scale and translate the point to image coordinates
+</span><span class="boring">        re: 3.0 * (x as f32 - 0.5 * width) / width,
+</span><span class="boring">        im: 2.0 * (y as f32 - 0.5 * height) / height,
+</span><span class="boring">    };
+</span><span class="boring">
+</span><span class="boring">    let mut i = 0;
+</span><span class="boring">    for t in 0..max_iter {
+</span><span class="boring">        if z.norm() &gt;= 2.0 {
+</span><span class="boring">            break;
+</span><span class="boring">        }
+</span><span class="boring">        z = z * z + c;
+</span><span class="boring">        i = t;
+</span><span class="boring">    }
+</span><span class="boring">    i
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">// Normalizes color intensity values within RGB range
+</span><span class="boring">fn normalize(color: f32, factor: f32) -&gt; u8 {
+</span><span class="boring">    ((color * factor).powf(0.8) * 255.) as u8
+</span><span class="boring">}
+</span>
+fn main() -&gt; Result&lt;()&gt; {
+    let (width, height) = (1920, 1080);
+    // 为指定宽高的输出图片分配内存
+    let mut img = ImageBuffer::new(width, height);
+    let iterations = 300;
+
+    let c = Complex::new(-0.8, 0.156);
+
+    let pool = ThreadPool::new(num_cpus::get());
+    let (tx, rx) = channel();
+
+    for y in 0..height {
+        let tx = tx.clone();
+        // execute 将每个像素作为单独的作业接收
+        pool.execute(move || for x in 0..width {
+                         let i = julia(c, x, y, width, height, iterations);
+                         let pixel = wavelength_to_rgb(380 + i * 400 / iterations);
+                         tx.send((x, y, pixel)).expect(&quot;Could not send data!&quot;);
+                     });
+    }
+
+    for _ in 0..(width * height) {
+        let (x, y, pixel) = rx.recv()?;
+        // 使用数据来设置像素的颜色
+        img.put_pixel(x, y, pixel);
+    }
+    
+    // 输出图片内容到指定文件中
+    let _ = img.save(&quot;output.png&quot;)?;
+    Ok(())
+}
+</code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="任务并行处理"><a class="header" href="#任务并行处理">任务并行处理</a></h1>
+<h3 id="并行修改数组中的元素"><a class="header" href="#并行修改数组中的元素">并行修改数组中的元素</a></h3>
+<p><a href="https://docs.rs/rayon/1.5.1/rayon/index.html">rayon</a> 提供了一个 <a href="https://docs.rs/rayon/*/rayon/iter/trait.IntoParallelRefMutIterator.html#tymethod.par_iter_mut">par_iter_mut</a> 方法用于并行化迭代一个数据集合。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use rayon::prelude::*;
+
+fn main() {
+    let mut arr = [0, 7, 9, 11];
+    arr.par_iter_mut().for_each(|p| *p -= 1);
+    println!(&quot;{:?}&quot;, arr);
+}
+</code></pre></pre>
+<h3 id="并行测试集合中的元素是否满足给定的条件"><a class="header" href="#并行测试集合中的元素是否满足给定的条件">并行测试集合中的元素是否满足给定的条件</a></h3>
+<p><a href="https://docs.rs/rayon/*/rayon/iter/trait.ParallelIterator.html#method.any">rayon::any</a> 和 <a href="https://docs.rs/rayon/*/rayon/iter/trait.ParallelIterator.html#method.all">rayon::all</a> 类似于 <a href="https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.any">std::any</a> / <a href="https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.all">std::all</a> ，但是是并行版本的。</p>
+<ul>
+<li><code>rayon::any</code> 并行检查迭代器中是否有任何元素满足给定的条件，一旦发现符合条件的元素，就立即返回</li>
+<li><code>rayon::all</code> 并行检查迭代器中的所有元素是否满足给定的条件，一旦发现不满足条件的元素，就立即返回</li>
+</ul>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use rayon::prelude::*;
+
+fn main() {
+    let mut vec = vec![2, 4, 6, 8];
+
+    assert!(!vec.par_iter().any(|n| (*n % 2) != 0));
+    assert!(vec.par_iter().all(|n| (*n % 2) == 0));
+    assert!(!vec.par_iter().any(|n| *n &gt; 8 ));
+    assert!(vec.par_iter().all(|n| *n &lt;= 8 ));
+
+    vec.push(9);
+
+    assert!(vec.par_iter().any(|n| (*n % 2) != 0));
+    assert!(!vec.par_iter().all(|n| (*n % 2) == 0));
+    assert!(vec.par_iter().any(|n| *n &gt; 8 ));
+    assert!(!vec.par_iter().all(|n| *n &lt;= 8 )); 
+}
+</code></pre></pre>
+<h3 id="使用给定条件并行搜索"><a class="header" href="#使用给定条件并行搜索">使用给定条件并行搜索</a></h3>
+<p>下面例子使用 <a href="https://docs.rs/rayon/*/rayon/iter/trait.IntoParallelRefIterator.html#tymethod.par_iter">par_iter</a> 和 <a href="https://docs.rs/rayon/*/rayon/iter/trait.ParallelIterator.html#method.find_any">rayon::find_any</a> 来并行搜索一个数组，直到找到任意一个满足条件的元素。</p>
+<p>如果有多个元素满足条件，<code>rayon</code> 会返回第一个找到的元素，注意：第一个找到的元素未必是数组中的顺序最靠前的那个。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use rayon::prelude::*;
+
+fn main() {
+    let v = vec![6, 2, 1, 9, 3, 8, 11];
+
+    // 这里使用了 `&amp;&amp;x` 的形式，大家可以在以下链接阅读更多 https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.find
+    let f1 = v.par_iter().find_any(|&amp;&amp;x| x == 9);
+    let f2 = v.par_iter().find_any(|&amp;&amp;x| x % 2 == 0 &amp;&amp; x &gt; 6);
+    let f3 = v.par_iter().find_any(|&amp;&amp;x| x &gt; 8);
+
+    assert_eq!(f1, Some(&amp;9));
+    assert_eq!(f2, Some(&amp;8));
+    assert!(f3 &gt; Some(&amp;8));
+}
+</code></pre></pre>
+<h3 id="对数组进行并行排序"><a class="header" href="#对数组进行并行排序">对数组进行并行排序</a></h3>
+<p>下面的例子将对字符串数组进行并行排序。</p>
+<p><a href="https://docs.rs/rayon/*/rayon/slice/trait.ParallelSliceMut.html#method.par_sort_unstable">par_sort_unstable</a> 方法的排序性能往往要比<a href="https://docs.rs/rayon/1.5.1/rayon/slice/trait.ParallelSliceMut.html#method.par_sort">稳定的排序算法</a>更高。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use rand::{Rng, thread_rng};
+use rand::distributions::Alphanumeric;
+use rayon::prelude::*;
+
+fn main() {
+  let mut vec = vec![String::new(); 100_000];
+  // 并行生成数组中的字符串
+  vec.par_iter_mut().for_each(|p| {
+    let mut rng = thread_rng();
+    *p = (0..5).map(|_| rng.sample(&amp;Alphanumeric)).collect()
+  });
+  
+  // 
+  vec.par_sort_unstable();
+}
+</code></pre></pre>
+<h3 id="并行化-map-reuduce"><a class="header" href="#并行化-map-reuduce">并行化 Map-Reuduce</a></h3>
+<p>下面例子使用 <a href="https://docs.rs/rayon/*/rayon/iter/trait.ParallelIterator.html#method.filter">rayon::filter</a>, <a href="https://docs.rs/rayon/*/rayon/iter/trait.ParallelIterator.html#method.map">rayon::map</a>, 和 <a href="https://docs.rs/rayon/*/rayon/iter/trait.ParallelIterator.html#method.reduce">rayon::reduce</a> 来超过 30 岁的 <code>Person</code> 的平均年龄。</p>
+<ul>
+<li><code>rayon::filter</code> 返回集合中所有满足给定条件的元素</li>
+<li><code>rayon::map</code> 对集合中的每一个元素执行一个操作，创建并返回新的迭代器，类似于<a href="https://course.rs/advance/functional-programing/iterator.html#%E8%BF%AD%E4%BB%A3%E5%99%A8%E9%80%82%E9%85%8D%E5%99%A8">迭代器适配器</a></li>
+<li><code>rayon::reduce</code> 则迭代器的元素进行不停的聚合运算，直到获取一个最终结果，这个结果跟例子中 <code>rayon::sum</code> 获取的结果是相同的</li>
+</ul>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use rayon::prelude::*;
+
+struct Person {
+    age: u32,
+}
+
+fn main() {
+    let v: Vec&lt;Person&gt; = vec![
+        Person { age: 23 },
+        Person { age: 19 },
+        Person { age: 42 },
+        Person { age: 17 },
+        Person { age: 17 },
+        Person { age: 31 },
+        Person { age: 30 },
+    ];
+
+    let num_over_30 = v.par_iter().filter(|&amp;x| x.age &gt; 30).count() as f32;
+    let sum_over_30 = v.par_iter()
+        .map(|x| x.age)
+        .filter(|&amp;x| x &gt; 30)
+        .reduce(|| 0, |x, y| x + y);
+
+    let alt_sum_30: u32 = v.par_iter()
+        .map(|x| x.age)
+        .filter(|&amp;x| x &gt; 30)
+        .sum();
+
+    let avg_over_30 = sum_over_30 as f32 / num_over_30;
+    let alt_avg_over_30 = alt_sum_30 as f32/ num_over_30;
+
+    assert!((avg_over_30 - alt_avg_over_30).abs() &lt; std::f32::EPSILON);
+    println!(&quot;The average age of people older than 30 is {}&quot;, avg_over_30);
+}
+</code></pre></pre>
+<h3 id="并行生成缩略图"><a class="header" href="#并行生成缩略图">并行生成缩略图</a></h3>
+<p>下面例子将为目录中的所有图片并行生成缩略图，然后将结果存到新的目录 <code>thumbnails</code> 中。</p>
+<p><a href="https://docs.rs/glob/*/glob/fn.glob_with.html">glob::glob_with</a> 可以找出当前目录下的所有 <code>.jpg</code> 文件，<code>rayon</code> 通过 <a href="https://docs.rs/image/*/image/enum.DynamicImage.html#method.resize">DynamicImage::resize</a> 来并行调整图片的大小。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021"><span class="boring">use error_chain::error_chain;
+</span>
+use std::path::Path;
+use std::fs::create_dir_all;
+
+<span class="boring">use error_chain::ChainedError;
+</span>use glob::{glob_with, MatchOptions};
+use image::{FilterType, ImageError};
+use rayon::prelude::*;
+
+<span class="boring">error_chain! {
+</span><span class="boring">   foreign_links {
+</span><span class="boring">       Image(ImageError);
+</span><span class="boring">       Io(std::io::Error);
+</span><span class="boring">       Glob(glob::PatternError);
+</span><span class="boring">   }
+</span><span class="boring">}
+</span>
+fn main() -&gt; Result&lt;()&gt; {
+    let options: MatchOptions = Default::default();
+    // 找到当前目录中的所有 `jpg` 文件
+    let files: Vec&lt;_&gt; = glob_with(&quot;*.jpg&quot;, options)?
+        .filter_map(|x| x.ok())
+        .collect();
+
+    if files.len() == 0 {
+        error_chain::bail!(&quot;No .jpg files found in current directory&quot;);
+    }
+
+    let thumb_dir = &quot;thumbnails&quot;;
+    create_dir_all(thumb_dir)?;
+
+    println!(&quot;Saving {} thumbnails into '{}'...&quot;, files.len(), thumb_dir);
+
+    let image_failures: Vec&lt;_&gt; = files
+        .par_iter()
+        .map(|path| {
+            make_thumbnail(path, thumb_dir, 300)
+                .map_err(|e| e.chain_err(|| path.display().to_string()))
+        })
+        .filter_map(|x| x.err())
+        .collect();
+
+    image_failures.iter().for_each(|x| println!(&quot;{}&quot;, x.display_chain()));
+
+    println!(&quot;{} thumbnails saved successfully&quot;, files.len() - image_failures.len());
+    Ok(())
+}
+
+fn make_thumbnail&lt;PA, PB&gt;(original: PA, thumb_dir: PB, longest_edge: u32) -&gt; Result&lt;()&gt;
+where
+    PA: AsRef&lt;Path&gt;,
+    PB: AsRef&lt;Path&gt;,
+{
+    let img = image::open(original.as_ref())?;
+    let file_path = thumb_dir.as_ref().join(original);
+
+    Ok(img.resize(longest_edge, longest_edge, FilterType::Nearest)
+        .save(file_path)?)
+}
+</code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="哈希"><a class="header" href="#哈希">哈希</a></h1>
+<h3 id="计算文件的-sha-256-摘要"><a class="header" href="#计算文件的-sha-256-摘要">计算文件的 SHA-256 摘要</a></h3>
+<p>写入一些数据到文件中，然后使用 <a href="https://briansmith.org/rustdoc/ring/digest/struct.Context.html">digest::Context</a> 来计算文件内容的 SHA-256 摘要 <a href="https://briansmith.org/rustdoc/ring/digest/struct.Digest.html">digest::Digest</a>。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021"><span class="boring">use error_chain::error_chain;
+</span>use data_encoding::HEXUPPER;
+use ring::digest::{Context, Digest, SHA256};
+use std::fs::File;
+use std::io::{BufReader, Read, Write};
+
+<span class="boring">error_chain! {
+</span><span class="boring">   foreign_links {
+</span><span class="boring">       Io(std::io::Error);
+</span><span class="boring">       Decode(data_encoding::DecodeError);
+</span><span class="boring">   }
+</span><span class="boring">}
+</span>
+fn sha256_digest&lt;R: Read&gt;(mut reader: R) -&gt; Result&lt;Digest&gt; {
+    let mut context = Context::new(&amp;SHA256);
+    let mut buffer = [0; 1024];
+
+    loop {
+        let count = reader.read(&amp;mut buffer)?;
+        if count == 0 {
+            break;
+        }
+        context.update(&amp;buffer[..count]);
+    }
+
+    Ok(context.finish())
+}
+
+fn main() -&gt; Result&lt;()&gt; {
+    let path = &quot;file.txt&quot;;
+
+    let mut output = File::create(path)?;
+    write!(output, &quot;We will generate a digest of this text&quot;)?;
+
+    let input = File::open(path)?;
+    let reader = BufReader::new(input);
+    let digest = sha256_digest(reader)?;
+
+    println!(&quot;SHA-256 digest is {}&quot;, HEXUPPER.encode(digest.as_ref()));
+
+    Ok(())
+}
+</code></pre></pre>
+<h3 id="使用-hmac-摘要来签名和验证消息"><a class="header" href="#使用-hmac-摘要来签名和验证消息">使用 HMAC 摘要来签名和验证消息</a></h3>
+<p>使用 <a href="https://briansmith.org/rustdoc/ring/hmac/">ring::hmac</a> 创建一个字符串签名并检查该签名的正确性。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use ring::{hmac, rand};
+use ring::rand::SecureRandom;
+use ring::error::Unspecified;
+
+fn main() -&gt; Result&lt;(), Unspecified&gt; {
+    let mut key_value = [0u8; 48];
+    let rng = rand::SystemRandom::new();
+    rng.fill(&amp;mut key_value)?;
+    let key = hmac::Key::new(hmac::HMAC_SHA256, &amp;key_value);
+
+    let message = &quot;Legitimate and important message.&quot;;
+    let signature = hmac::sign(&amp;key, message.as_bytes());
+    hmac::verify(&amp;key, message.as_bytes(), signature.as_ref())?;
+
+    Ok(())
+}
+</code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="加密"><a class="header" href="#加密">加密</a></h1>
+<h3 id="使用--pbkdf2-对密码进行哈希和加盐-salt-"><a class="header" href="#使用--pbkdf2-对密码进行哈希和加盐-salt-">使用  PBKDF2 对密码进行哈希和加盐( salt )</a></h3>
+<p><a href="https://briansmith.org/rustdoc/ring/pbkdf2/index.html">ring::pbkdf2</a> 可以对一个加盐密码进行哈希。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">
+use data_encoding::HEXUPPER;
+use ring::error::Unspecified;
+use ring::rand::SecureRandom;
+use ring::{digest, pbkdf2, rand};
+use std::num::NonZeroU32;
+
+fn main() -&gt; Result&lt;(), Unspecified&gt; {
+    const CREDENTIAL_LEN: usize = digest::SHA512_OUTPUT_LEN;
+    let n_iter = NonZeroU32::new(100_000).unwrap();
+    let rng = rand::SystemRandom::new();
+
+    let mut salt = [0u8; CREDENTIAL_LEN];
+    // 生成 salt: 将安全生成的随机数填入到字节数组中
+    rng.fill(&amp;mut salt)?;
+
+    let password = &quot;Guess Me If You Can!&quot;;
+    let mut pbkdf2_hash = [0u8; CREDENTIAL_LEN];
+    pbkdf2::derive(
+        pbkdf2::PBKDF2_HMAC_SHA512,
+        n_iter,
+        &amp;salt,
+        password.as_bytes(),
+        &amp;mut pbkdf2_hash,
+    );
+    println!(&quot;Salt: {}&quot;, HEXUPPER.encode(&amp;salt));
+    println!(&quot;PBKDF2 hash: {}&quot;, HEXUPPER.encode(&amp;pbkdf2_hash));
+
+    // `verify` 检查哈希是否正确
+    let should_`succeed = pbkdf2::verify(
+        pbkdf2::PBKDF2_HMAC_SHA512,
+        n_iter,
+        &amp;salt,
+        password.as_bytes(),
+        &amp;pbkdf2_hash,
+    );
+    let wrong_password = &quot;Definitely not the correct password&quot;;
+    let should_fail = pbkdf2::verify(
+        pbkdf2::PBKDF2_HMAC_SHA512,
+        n_iter,
+        &amp;salt,
+        wrong_password.as_bytes(),
+        &amp;pbkdf2_hash,
+    );
+
+    assert!(should_succeed.is_ok());
+    assert!(!should_fail.is_ok());
+
+    Ok(())
+}
+</code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="位字段"><a class="header" href="#位字段">位字段</a></h1>
+<h3 id="定义和操作位字段"><a class="header" href="#定义和操作位字段">定义和操作位字段</a></h3>
+<p>使用 <a href="https://docs.rs/bitflags/1.3.2/bitflags/macro.bitflags.html"><code>bitflags!</code></a> 宏可以帮助我们创建安全的位字段类型 <code>MyFlags</code>，然后为其实现基本的 <code>clear</code> 操作。以下代码展示了基本的位操作和格式化:</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use bitflags::bitflags;
+use std::fmt;
+
+bitflags! {
+    struct MyFlags: u32 {
+        const FLAG_A       = 0b00000001;
+        const FLAG_B       = 0b00000010;
+        const FLAG_C       = 0b00000100;
+        const FLAG_ABC     = Self::FLAG_A.bits
+                           | Self::FLAG_B.bits
+                           | Self::FLAG_C.bits;
+    }
+}
+
+impl MyFlags {
+    pub fn clear(&amp;mut self) -&gt; &amp;mut MyFlags {
+        self.bits = 0;  
+        self
+    }
+}
+
+impl fmt::Display for MyFlags {
+    fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
+        write!(f, &quot;{:032b}&quot;, self.bits)
+    }
+}
+
+fn main() {
+    let e1 = MyFlags::FLAG_A | MyFlags::FLAG_C;
+    let e2 = MyFlags::FLAG_B | MyFlags::FLAG_C;
+    assert_eq!((e1 | e2), MyFlags::FLAG_ABC);   
+    assert_eq!((e1 &amp; e2), MyFlags::FLAG_C);    
+    assert_eq!((e1 - e2), MyFlags::FLAG_A);    
+    assert_eq!(!e2, MyFlags::FLAG_A);           
+
+    let mut flags = MyFlags::FLAG_ABC;
+    assert_eq!(format!(&quot;{}&quot;, flags), &quot;00000000000000000000000000000111&quot;);
+    assert_eq!(format!(&quot;{}&quot;, flags.clear()), &quot;00000000000000000000000000000000&quot;);
+    assert_eq!(format!(&quot;{:?}&quot;, MyFlags::FLAG_B), &quot;FLAG_B&quot;);
+    assert_eq!(format!(&quot;{:?}&quot;, MyFlags::FLAG_A | MyFlags::FLAG_B), &quot;FLAG_A | FLAG_B&quot;);
+}
+</code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sqlite"><a class="header" href="#sqlite">SQLite</a></h1>
+<h3 id="创建-sqlite-数据库"><a class="header" href="#创建-sqlite-数据库">创建 SQLite 数据库</a></h3>
+<p>使用 <code>rusqlite</code> 可以创建 SQLite 数据库，<a href="https://docs.rs/rusqlite/*/rusqlite/struct.Connection.html#method.open">Connection::open</a> 会尝试打开一个数据库，若不存在，则创建新的数据库。</p>
+<blockquote>
+<p>这里创建的 <code>cats.db</code> 数据库将被后面的例子所使用</p>
+</blockquote>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use rusqlite::{Connection, Result};
+use rusqlite::NO_PARAMS;
+
+fn main() -&gt; Result&lt;()&gt; {
+    let conn = Connection::open(&quot;cats.db&quot;)?;
+
+    conn.execute(
+        &quot;create table if not exists cat_colors (
+             id integer primary key,
+             name text not null unique
+         )&quot;,
+        NO_PARAMS,
+    )?;
+    conn.execute(
+        &quot;create table if not exists cats (
+             id integer primary key,
+             name text not null,
+             color_id integer not null references cat_colors(id)
+         )&quot;,
+        NO_PARAMS,
+    )?;
+
+    Ok(())
+}
+</code></pre></pre>
+<h3 id="插入和查询"><a class="header" href="#插入和查询">插入和查询</a></h3>
+<pre><pre class="playground"><code class="language-rust editable edition2021">
+use rusqlite::NO_PARAMS;
+use rusqlite::{Connection, Result};
+use std::collections::HashMap;
+
+#[derive(Debug)]
+struct Cat {
+    name: String,
+    color: String,
+}
+
+fn main() -&gt; Result&lt;()&gt; {
+    // 打开第一个例子所创建的数据库
+    let conn = Connection::open(&quot;cats.db&quot;)?;
+
+    let mut cat_colors = HashMap::new();
+    cat_colors.insert(String::from(&quot;Blue&quot;), vec![&quot;Tigger&quot;, &quot;Sammy&quot;]);
+    cat_colors.insert(String::from(&quot;Black&quot;), vec![&quot;Oreo&quot;, &quot;Biscuit&quot;]);
+
+    for (color, catnames) in &amp;cat_colors {
+        // 插入一条数据行
+        conn.execute(
+            &quot;INSERT INTO cat_colors (name) values (?1)&quot;,
+            &amp;[&amp;color.to_string()],
+        )?;
+        // 获取最近插入数据行的 id
+        let last_id: String = conn.last_insert_rowid().to_string();
+
+        for cat in catnames {
+            conn.execute(
+                &quot;INSERT INTO cats (name, color_id) values (?1, ?2)&quot;,
+                &amp;[&amp;cat.to_string(), &amp;last_id],
+            )?;
+        }
+    }
+    let mut stmt = conn.prepare(
+        &quot;SELECT c.name, cc.name from cats c
+         INNER JOIN cat_colors cc
+         ON cc.id = c.color_id;&quot;,
+    )?;
+
+    let cats = stmt.query_map(NO_PARAMS, |row| {
+        Ok(Cat {
+            name: row.get(0)?,
+            color: row.get(1)?,
+        })
+    })?;
+
+    for cat in cats {
+        println!(&quot;Found cat {:?}&quot;, cat);
+    }
+
+    Ok(())
+}
+</code></pre></pre>
+<h3 id="使用事务"><a class="header" href="#使用事务">使用事务</a></h3>
+<p>使用 <a href="https://docs.rs/rusqlite/*/rusqlite/struct.Connection.html#method.transaction">Connection::transaction</a> 可以开始新的事务，若没有对事务进行显式地提交 <a href="https://docs.rs/rusqlite/0.27.0/rusqlite/struct.Transaction.html#method.commit">Transaction::commit</a>，则会进行回滚。</p>
+<p>下面的例子中，<code>rolled_back_tx</code> 插入了重复的颜色名称，会发生回滚。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use rusqlite::{Connection, Result, NO_PARAMS};
+
+fn main() -&gt; Result&lt;()&gt; {
+    // 打开第一个例子所创建的数据库
+    let mut conn = Connection::open(&quot;cats.db&quot;)?;
+
+    successful_tx(&amp;mut conn)?;
+
+    let res = rolled_back_tx(&amp;mut conn);
+    assert!(res.is_err());
+
+    Ok(())
+}
+
+fn successful_tx(conn: &amp;mut Connection) -&gt; Result&lt;()&gt; {
+    let tx = conn.transaction()?;
+
+    tx.execute(&quot;delete from cat_colors&quot;, NO_PARAMS)?;
+    tx.execute(&quot;insert into cat_colors (name) values (?1)&quot;, &amp;[&amp;&quot;lavender&quot;])?;
+    tx.execute(&quot;insert into cat_colors (name) values (?1)&quot;, &amp;[&amp;&quot;blue&quot;])?;
+
+    tx.commit()
+}
+
+fn rolled_back_tx(conn: &amp;mut Connection) -&gt; Result&lt;()&gt; {
+    let tx = conn.transaction()?;
+
+    tx.execute(&quot;delete from cat_colors&quot;, NO_PARAMS)?;
+    tx.execute(&quot;insert into cat_colors (name) values (?1)&quot;, &amp;[&amp;&quot;lavender&quot;])?;
+    tx.execute(&quot;insert into cat_colors (name) values (?1)&quot;, &amp;[&amp;&quot;blue&quot;])?;
+    tx.execute(&quot;insert into cat_colors (name) values (?1)&quot;, &amp;[&amp;&quot;lavender&quot;])?;
+
+    tx.commit()
+}
+</code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="postgres"><a class="header" href="#postgres">Postgres</a></h1>
+<h3 id="在数据库中创建表格"><a class="header" href="#在数据库中创建表格">在数据库中创建表格</a></h3>
+<p>我们通过 <a href="https://docs.rs/postgres/0.17.2/postgres/">postgres</a> 来操作数据库。下面的例子有一个前提：数据库 <code>library</code> 已经存在，其中用户名和密码都是 <code>postgres</code>。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use postgres::{Client, NoTls, Error};
+
+fn main() -&gt; Result&lt;(), Error&gt; {
+    // 连接到数据库 library
+    let mut client = Client::connect(&quot;postgresql://postgres:postgres@localhost/library&quot;, NoTls)?;
+    
+    client.batch_execute(&quot;
+        CREATE TABLE IF NOT EXISTS author (
+            id              SERIAL PRIMARY KEY,
+            name            VARCHAR NOT NULL,
+            country         VARCHAR NOT NULL
+            )
+    &quot;)?;
+
+    client.batch_execute(&quot;
+        CREATE TABLE IF NOT EXISTS book  (
+            id              SERIAL PRIMARY KEY,
+            title           VARCHAR NOT NULL,
+            author_id       INTEGER NOT NULL REFERENCES author
+            )
+    &quot;)?;
+
+    Ok(())
+
+}
+</code></pre></pre>
+<h3 id="插入和查询-1"><a class="header" href="#插入和查询-1">插入和查询</a></h3>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use postgres::{Client, NoTls, Error};
+use std::collections::HashMap;
+
+struct Author {
+    _id: i32,
+    name: String,
+    country: String
+}
+
+fn main() -&gt; Result&lt;(), Error&gt; {
+    let mut client = Client::connect(&quot;postgresql://postgres:postgres@localhost/library&quot;, 
+                                    NoTls)?;
+    
+    let mut authors = HashMap::new();
+    authors.insert(String::from(&quot;Chinua Achebe&quot;), &quot;Nigeria&quot;);
+    authors.insert(String::from(&quot;Rabindranath Tagore&quot;), &quot;India&quot;);
+    authors.insert(String::from(&quot;Anita Nair&quot;), &quot;India&quot;);
+
+    for (key, value) in &amp;authors {
+        let author = Author {
+            _id: 0,
+            name: key.to_string(),
+            country: value.to_string()
+        };
+
+        // 插入数据
+        client.execute(
+                &quot;INSERT INTO author (name, country) VALUES ($1, $2)&quot;,
+                &amp;[&amp;author.name, &amp;author.country],
+        )?;
+    }
+
+    // 查询数据
+    for row in client.query(&quot;SELECT id, name, country FROM author&quot;, &amp;[])? {
+        let author = Author {
+            _id: row.get(0),
+            name: row.get(1),
+            country: row.get(2),
+        };
+        println!(&quot;Author {} is from {}&quot;, author.name, author.country);
+    }
+
+    Ok(())
+
+}
+</code></pre></pre>
+<h3 id="聚合数据"><a class="header" href="#聚合数据">聚合数据</a></h3>
+<p>下面代码将使用降序的方式列出 <a href="database/">Museum of Modern Art</a> 数据库中的前 7999 名艺术家的国籍分布.</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use postgres::{Client, Error, NoTls};
+
+struct Nation {
+    nationality: String,
+    count: i64,
+}
+
+fn main() -&gt; Result&lt;(), Error&gt; {
+    let mut client = Client::connect(
+        &quot;postgresql://postgres:postgres@127.0.0.1/moma&quot;,
+        NoTls,
+    )?;
+
+    for row in client.query 
+    (&quot;SELECT nationality, COUNT(nationality) AS count 
+    FROM artists GROUP BY nationality ORDER BY count DESC&quot;, &amp;[])? {
+        
+        let (nationality, count) : (Option&lt;String&gt;, Option&lt;i64&gt;) 
+        = (row.get (0), row.get (1));
+        
+        if nationality.is_some () &amp;&amp; count.is_some () {
+
+            let nation = Nation{
+                nationality: nationality.unwrap(),
+                count: count.unwrap(),
+        };
+            println!(&quot;{} {}&quot;, nation.nationality, nation.count);
+            
+        }
+    }
+
+    Ok(())
+}
+</code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="时间计算和转换"><a class="header" href="#时间计算和转换">时间计算和转换</a></h1>
+<h3 id="测量某段代码的耗时"><a class="header" href="#测量某段代码的耗时">测量某段代码的耗时</a></h3>
+<p>测量从 <a href="https://doc.rust-lang.org/std/time/struct.Instant.html#method.now">time::Instant::now</a> 开始所经过的时间 <a href="https://doc.rust-lang.org/std/time/struct.Instant.html#method.elapsed">time::Instant::elapsed</a>.</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use std::time::{Duration, Instant};
+
+fn main() {
+    let start = Instant::now();
+    expensive_function();
+    let duration = start.elapsed();
+
+    println!(&quot;Time elapsed in expensive_function() is: {:?}&quot;, duration);
+}
+</code></pre></pre>
+<h3 id="对日期和时间进行计算"><a class="header" href="#对日期和时间进行计算">对日期和时间进行计算</a></h3>
+<p>使用 <a href="https://docs.rs/chrono/*/chrono/struct.Date.html#method.checked_add_signed">DateTime::checked_add_signed</a> 计算和显示从现在开始两周后的日期和时间，然后再计算一天前的日期 <a href="https://docs.rs/chrono/*/chrono/struct.Date.html#method.checked_sub_signed">DateTime::checked_sub_signed</a>。</p>
+<p><a href="https://docs.rs/chrono/*/chrono/struct.DateTime.html#method.format">DateTime::format</a> 所支持的转义序列可以在 <a href="https://docs.rs/chrono/*/chrono/format/strftime/index.html">chrono::format::strftime</a> 找到.</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use chrono::{DateTime, Duration, Utc};
+
+fn day_earlier(date_time: DateTime&lt;Utc&gt;) -&gt; Option&lt;DateTime&lt;Utc&gt;&gt; {
+    date_time.checked_sub_signed(Duration::days(1))
+}
+
+fn main() {
+    let now = Utc::now();
+    println!(&quot;{}&quot;, now);
+
+    let almost_three_weeks_from_now = now.checked_add_signed(Duration::weeks(2))
+            .and_then(|in_2weeks| in_2weeks.checked_add_signed(Duration::weeks(1)))
+            .and_then(day_earlier);
+
+    match almost_three_weeks_from_now {
+        Some(x) =&gt; println!(&quot;{}&quot;, x),
+        None =&gt; eprintln!(&quot;Almost three weeks from now overflows!&quot;),
+    }
+
+    match now.checked_add_signed(Duration::max_value()) {
+        Some(x) =&gt; println!(&quot;{}&quot;, x),
+        None =&gt; eprintln!(&quot;We can't use chrono to tell the time for the Solar System to complete more than one full orbit around the galactic center.&quot;),
+    }
+}
+</code></pre></pre>
+<h3 id="将本地时间转换成其它时区"><a class="header" href="#将本地时间转换成其它时区">将本地时间转换成其它时区</a></h3>
+<p>使用 <a href="https://docs.rs/chrono/*/chrono/offset/struct.Local.html#method.now">offset::Local::now</a> 获取本地时间并进行显示，接着，使用 <a href="https://docs.rs/chrono/*/chrono/struct.DateTime.html#method.from_utc">DateTime::from_utc</a> 将它转换成 UTC 标准时间。最后，再使用 <a href="https://docs.rs/chrono/*/chrono/offset/struct.FixedOffset.html">offset::FixedOffset</a> 将 UTC 时间转换成 UTC+8 和 UTC-2 的时间。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use chrono::{DateTime, FixedOffset, Local, Utc};
+
+fn main() {
+    let local_time = Local::now();
+    let utc_time = DateTime::&lt;Utc&gt;::from_utc(local_time.naive_utc(), Utc);
+    let china_timezone = FixedOffset::east(8 * 3600);
+    let rio_timezone = FixedOffset::west(2 * 3600);
+    println!(&quot;Local time now is {}&quot;, local_time);
+    println!(&quot;UTC time now is {}&quot;, utc_time);
+    println!(
+        &quot;Time in Hong Kong now is {}&quot;,
+        utc_time.with_timezone(&amp;china_timezone)
+    );
+    println!(&quot;Time in Rio de Janeiro now is {}&quot;, utc_time.with_timezone(&amp;rio_timezone));
+}
+</code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="解析和显示"><a class="header" href="#解析和显示">解析和显示</a></h1>
+<h3 id="检查日期和时间"><a class="header" href="#检查日期和时间">检查日期和时间</a></h3>
+<p>通过 <a href="https://docs.rs/chrono/*/chrono/struct.DateTime.html">DateTime</a> 获取当前的 UTC 时间:</p>
+<ul>
+<li><a href="https://docs.rs/chrono/*/chrono/trait.Timelike.html">Timelike</a>, 时/分/秒</li>
+<li><a href="https://docs.rs/chrono/*/chrono/trait.Datelike.html">Datelike</a>, 年/月/日</li>
+</ul>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use chrono::{Datelike, Timelike, Utc};
+
+fn main() {
+    let now = Utc::now();
+
+    let (is_pm, hour) = now.hour12();
+    println!(
+        &quot;The current UTC time is {:02}:{:02}:{:02} {}&quot;,
+        hour,
+        now.minute(),
+        now.second(),
+        if is_pm { &quot;PM&quot; } else { &quot;AM&quot; }
+    );
+    println!(
+        &quot;And there have been {} seconds since midnight&quot;,
+        now.num_seconds_from_midnight()
+    );
+
+    let (is_common_era, year) = now.year_ce();
+    println!(
+        &quot;The current UTC date is {}-{:02}-{:02} {:?} ({})&quot;,
+        year,
+        now.month(),
+        now.day(),
+        now.weekday(),
+        if is_common_era { &quot;CE&quot; } else { &quot;BCE&quot; }
+    );
+    println!(
+        &quot;And the Common Era began {} days ago&quot;,
+        now.num_days_from_ce()
+    );
+}
+</code></pre></pre>
+<h3 id="日期和时间戳的相互转换"><a class="header" href="#日期和时间戳的相互转换">日期和时间戳的相互转换</a></h3>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use chrono::{NaiveDate, NaiveDateTime};
+
+fn main() {
+    // 生成一个具体的日期时间
+    let date_time: NaiveDateTime = NaiveDate::from_ymd(2017, 11, 12).and_hms(17, 33, 44);
+    println!(
+        &quot;Number of seconds between 1970-01-01 00:00:00 and {} is {}.&quot;,
+        // 打印日期和日期对应的时间戳
+        date_time, date_time.timestamp());
+
+    // 计算从 1970 1月1日 0:00:00 UTC 开始，10亿秒后是什么日期时间
+    let date_time_after_a_billion_seconds = NaiveDateTime::from_timestamp(1_000_000_000, 0);
+    println!(
+        &quot;Date after a billion seconds since 1970-01-01 00:00:00 was {}.&quot;,
+        date_time_after_a_billion_seconds);
+}
+</code></pre></pre>
+<h3 id="显示格式化的日期和时间"><a class="header" href="#显示格式化的日期和时间">显示格式化的日期和时间</a></h3>
+<p>通过 <a href="https://docs.rs/chrono/*/chrono/offset/struct.Utc.html#method.now">Utc::now</a> 可以获取当前的 UTC 时间。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use chrono::{DateTime, Utc};
+
+fn main() {
+    let now: DateTime&lt;Utc&gt; = Utc::now();
+
+    println!(&quot;UTC now is: {}&quot;, now);
+    // 使用 RFC 2822 格式显示当前时间
+    println!(&quot;UTC now in RFC 2822 is: {}&quot;, now.to_rfc2822());
+    // 使用 RFC 3339 格式显示当前时间
+    println!(&quot;UTC now in RFC 3339 is: {}&quot;, now.to_rfc3339());
+    // 使用自定义格式显示当前时间
+    println!(&quot;UTC now in a custom format is: {}&quot;, now.format(&quot;%a %b %e %T %Y&quot;));
+}
+</code></pre></pre>
+<h3 id="将字符串解析为-datetime-结构体"><a class="header" href="#将字符串解析为-datetime-结构体">将字符串解析为 DateTime 结构体</a></h3>
+<p>我们可以将多种格式的日期时间字符串转换成 <a href="https://docs.rs/chrono/*/chrono/struct.DateTime.html">DateTime</a> 结构体。<a href="https://docs.rs/chrono/*/chrono/struct.DateTime.html#method.parse_from_str">DateTime::parse_from_str</a> 使用的转义序列可以在 <a href="https://docs.rs/chrono/0.4.19/chrono/format/strftime/index.html">chrono::format::strftime</a> 找到.</p>
+<p>只有当能唯一的标识出日期和时间时，才能创建 <code>DateTime</code>。如果要在没有时区的情况下解析日期或时间，你需要使用 <a href="https://docs.rs/chrono/*/chrono/naive/struct.NaiveDate.html"><code>NativeDate</code></a> 等函数。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use chrono::{DateTime, NaiveDate, NaiveDateTime, NaiveTime};
+use chrono::format::ParseError;
+
+
+fn main() -&gt; Result&lt;(), ParseError&gt; {
+    let rfc2822 = DateTime::parse_from_rfc2822(&quot;Tue, 1 Jul 2003 10:52:37 +0200&quot;)?;
+    println!(&quot;{}&quot;, rfc2822);
+
+    let rfc3339 = DateTime::parse_from_rfc3339(&quot;1996-12-19T16:39:57-08:00&quot;)?;
+    println!(&quot;{}&quot;, rfc3339);
+    
+    let custom = DateTime::parse_from_str(&quot;5.8.1994 8:00 am +0000&quot;, &quot;%d.%m.%Y %H:%M %P %z&quot;)?;
+    println!(&quot;{}&quot;, custom);
+
+    let time_only = NaiveTime::parse_from_str(&quot;23:56:04&quot;, &quot;%H:%M:%S&quot;)?;
+    println!(&quot;{}&quot;, time_only);
+
+    let date_only = NaiveDate::parse_from_str(&quot;2015-09-05&quot;, &quot;%Y-%m-%d&quot;)?;
+    println!(&quot;{}&quot;, date_only);
+
+    let no_timezone = NaiveDateTime::parse_from_str(&quot;2015-09-05 23:56:04&quot;, &quot;%Y-%m-%d %H:%M:%S&quot;)?;
+    println!(&quot;{}&quot;, no_timezone);
+
+    Ok(())
+}
+</code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="日志"><a class="header" href="#日志">日志</a></h1>
+<h2 id="log-包"><a class="header" href="#log-包">log 包</a></h2>
+<p><a href="https://docs.rs/crate/log/0.4.16">log</a> 提供了日志相关的实用工具。</p>
+<h3 id="在控制台打印-debug-信息"><a class="header" href="#在控制台打印-debug-信息">在控制台打印 debug 信息</a></h3>
+<p><code>env_logger</code> 通过环境变量来配置日志。<a href="https://docs.rs/log/0.4.16/log/macro.debug.html">log::debug!</a> 使用起来跟 <a href="https://doc.rust-lang.org/std/fmt/">std::fmt</a> 中的格式化字符串很像。</p>
+<pre><pre class="playground"><code class="language-rust edition2021">fn execute_query(query: &amp;str) {
+    log::debug!(&quot;Executing query: {}&quot;, query);
+}
+
+fn main() {
+    env_logger::init();
+
+    execute_query(&quot;DROP TABLE students&quot;);
+}
+</code></pre></pre>
+<p>如果大家运行代码，会发现没有任何日志输出，原因是默认的日志级别是 <code>error</code>，因此我们需要通过 <code>RUST_LOG</code> 环境变量来设置下新的日志级别：</p>
+<pre><code class="language-shell">$ RUST_LOG=debug cargo run
+</code></pre>
+<p>然后你将成功看到以下输出:</p>
+<pre><code class="language-shell">DEBUG:main: Executing query: DROP TABLE students
+</code></pre>
+<h3 id="将错误日志输出到控制台"><a class="header" href="#将错误日志输出到控制台">将错误日志输出到控制台</a></h3>
+<p>下面我们通过 <a href="https://docs.rs/log/0.4.16/log/macro.error.html">log::error!</a> 将错误日志输出到标准错误 <code>stderr</code>。</p>
+<pre><pre class="playground"><code class="language-rust edition2021">fn execute_query(_query: &amp;str) -&gt; Result&lt;(), &amp;'static str&gt; {
+    Err(&quot;I'm afraid I can't do that&quot;)
+}
+
+fn main() {
+    env_logger::init();
+
+    let response = execute_query(&quot;DROP TABLE students&quot;);
+    if let Err(err) = response {
+        log::error!(&quot;Failed to execute query: {}&quot;, err);
+    }
+}
+</code></pre></pre>
+<h3 id="将错误输出到标准输出-stdout"><a class="header" href="#将错误输出到标准输出-stdout">将错误输出到标准输出 stdout</a></h3>
+<p>默认的错误会输出到标准错误输出 <code>stderr</code>，下面我们通过自定的配置来让错误输出到标准输出 <code>stdout</code>。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use env_logger::{Builder, Target};
+
+fn main() {
+    Builder::new()
+        .target(Target::Stdout)
+        .init();
+
+    log::error!(&quot;This error has been printed to Stdout&quot;);
+}
+</code></pre></pre>
+<h3 id="使用自定义-logger"><a class="header" href="#使用自定义-logger">使用自定义 logger</a></h3>
+<p>下面的代码将实现一个自定义 logger <code>ConsoleLogger</code>，输出到标准输出 <code>stdout</code>。为了使用日志宏，<code>ConsoleLogger</code> 需要实现 <a href="https://docs.rs/log/*/log/trait.Log.html">log::Log</a> 特征，然后使用 <a href="https://docs.rs/log/*/log/fn.set_logger.html">log::set_logger</a> 来安装使用。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use log::{Record, Level, Metadata, LevelFilter, SetLoggerError};
+
+static CONSOLE_LOGGER: ConsoleLogger = ConsoleLogger;
+
+struct ConsoleLogger;
+
+impl log::Log for ConsoleLogger {
+  fn enabled(&amp;self, metadata: &amp;Metadata) -&gt; bool {
+     metadata.level() &lt;= Level::Info
+    }
+
+    fn log(&amp;self, record: &amp;Record) {
+        if self.enabled(record.metadata()) {
+            println!(&quot;Rust says: {} - {}&quot;, record.level(), record.args());
+        }
+    }
+
+    fn flush(&amp;self) {}
+}
+
+fn main() -&gt; Result&lt;(), SetLoggerError&gt; {
+    log::set_logger(&amp;CONSOLE_LOGGER)?;
+    log::set_max_level(LevelFilter::Info);
+
+    log::info!(&quot;hello log&quot;);
+    log::warn!(&quot;warning&quot;);
+    log::error!(&quot;oops&quot;);
+    Ok(())
+}
+</code></pre></pre>
+<h3 id="输出到-unix-syslog"><a class="header" href="#输出到-unix-syslog">输出到 Unix syslog</a></h3>
+<p>下面的代码将使用 <a href="https://docs.rs/crate/syslog/6.0.1">syslog</a> 包将日志输出到 <a href="https://www.gnu.org/software/libc/manual/html_node/Overview-of-Syslog.html">Unix Syslog</a>.</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">#[cfg(target_os = &quot;linux&quot;)]
+#[cfg(target_os = &quot;linux&quot;)]
+use syslog::{Facility, Error};
+
+#[cfg(target_os = &quot;linux&quot;)]
+fn main() -&gt; Result&lt;(), Error&gt; {
+    // 初始化 logger
+    syslog::init(Facility::LOG_USER,
+                 log::LevelFilter::Debug,
+                 // 可选的应用名称
+                 Some(&quot;My app name&quot;))?;
+    log::debug!(&quot;this is a debug {}&quot;, &quot;message&quot;);
+    log::error!(&quot;this is an error!&quot;);
+    Ok(())
+}
+
+#[cfg(not(target_os = &quot;linux&quot;))]
+fn main() {
+    println!(&quot;So far, only Linux systems are supported.&quot;);
+}
+</code></pre></pre>
+<h2 id="tracing"><a class="header" href="#tracing">tracing</a></h2>
+<p>@todo</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="配置日志"><a class="header" href="#配置日志">配置日志</a></h1>
+<h3 id="为每个模块开启独立的日志级别"><a class="header" href="#为每个模块开启独立的日志级别">为每个模块开启独立的日志级别</a></h3>
+<p>下面代码创建了模块 <code>foo</code> 和嵌套模块 <code>foo::bar</code>，并通过 <a href="https://docs.rs/env_logger/*/env_logger/#enabling-logging">RUST_LOG</a> 环境变量对各自的日志级别进行了控制。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">mod foo {
+    mod bar {
+        pub fn run() {
+            log::warn!(&quot;[bar] warn&quot;);
+            log::info!(&quot;[bar] info&quot;);
+            log::debug!(&quot;[bar] debug&quot;);
+        }
+    }
+
+    pub fn run() {
+        log::warn!(&quot;[foo] warn&quot;);
+        log::info!(&quot;[foo] info&quot;);
+        log::debug!(&quot;[foo] debug&quot;);
+        bar::run();
+    }
+}
+
+fn main() {
+    env_logger::init();
+    log::warn!(&quot;[root] warn&quot;);
+    log::info!(&quot;[root] info&quot;);
+    log::debug!(&quot;[root] debug&quot;);
+    foo::run();
+}
+</code></pre></pre>
+<p>要让环境变量生效，首先需要通过 <code>env_logger::init()</code> 开启相关的支持。然后通过以下命令来运行程序:</p>
+<pre><code class="language-shell">RUST_LOG=&quot;warn,test::foo=info,test::foo::bar=debug&quot; ./test
+</code></pre>
+<p>此时的默认日志级别被设置为 <code>warn</code>，但我们还将 <code>foo</code> 模块级别设置为 <code>info</code>, <code>foo::bar</code> 模块日志级别设置为 <code>debug</code>。</p>
+<pre><code class="language-bash">WARN:test: [root] warn
+WARN:test::foo: [foo] warn
+INFO:test::foo: [foo] info
+WARN:test::foo::bar: [bar] warn
+INFO:test::foo::bar: [bar] info
+DEBUG:test::foo::bar: [bar] debug
+</code></pre>
+<h3 id="使用自定义环境变量来设置日志"><a class="header" href="#使用自定义环境变量来设置日志">使用自定义环境变量来设置日志</a></h3>
+<p><a href="https://docs.rs/env_logger/*/env_logger/struct.Builder.html">Builder</a> 将对日志进行配置，以下代码使用 <code>MY_APP_LOG</code> 来替代 <code>RUST_LOG</code> 环境变量:</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use std::env;
+use env_logger::Builder;
+
+fn main() {
+    Builder::new()
+        .parse(&amp;env::var(&quot;MY_APP_LOG&quot;).unwrap_or_default())
+        .init();
+
+    log::info!(&quot;informational message&quot;);
+    log::warn!(&quot;warning message&quot;);
+    log::error!(&quot;this is an error {}&quot;, &quot;message&quot;);
+}
+</code></pre></pre>
+<h3 id="在日志中包含时间戳"><a class="header" href="#在日志中包含时间戳">在日志中包含时间戳</a></h3>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use std::io::Write;
+use chrono::Local;
+use env_logger::Builder;
+use log::LevelFilter;
+
+fn main() {
+    Builder::new()
+        .format(|buf, record| {
+            writeln!(buf,
+                &quot;{} [{}] - {}&quot;,
+                Local::now().format(&quot;%Y-%m-%dT%H:%M:%S&quot;),
+                record.level(),
+                record.args()
+            )
+        })
+        .filter(None, LevelFilter::Info)
+        .init();
+
+    log::warn!(&quot;warn&quot;);
+    log::info!(&quot;info&quot;);
+    log::debug!(&quot;debug&quot;);
+}
+</code></pre></pre>
+<p>以下是 <code>stderr</code> 的输出:</p>
+<pre><code class="language-shell">2022-03-22T21:57:06 [WARN] - warn
+2022-03-22T21:57:06 [INFO] - info
+</code></pre>
+<h3 id="将日志输出到指定文件"><a class="header" href="#将日志输出到指定文件">将日志输出到指定文件</a></h3>
+<p><a href="https://docs.rs/log4rs/">log4rs</a> 可以帮我们将日志输出指定的位置，它可以使用外部 YAML 文件或 <code>builder</code> 的方式进行配置。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021"><span class="boring">use error_chain::error_chain;
+</span>
+use log::LevelFilter;
+use log4rs::append::file::FileAppender;
+use log4rs::encode::pattern::PatternEncoder;
+use log4rs::config::{Appender, Config, Root};
+
+<span class="boring">error_chain! {
+</span><span class="boring">   foreign_links {
+</span><span class="boring">       Io(std::io::Error);
+</span><span class="boring">       LogConfig(log4rs::config::Errors);
+</span><span class="boring">       SetLogger(log::SetLoggerError);
+</span><span class="boring">   }
+</span><span class="boring">}
+</span>
+fn main() -&gt; Result&lt;()&gt; {
+    // 创建日志配置，并指定输出的位置
+    let logfile = FileAppender::builder()
+        // 编码模式的详情参见: https://docs.rs/log4rs/1.0.0/log4rs/encode/pattern/index.html
+        .encoder(Box::new(PatternEncoder::new(&quot;{l} - {m}\n&quot;)))
+        .build(&quot;log/output.log&quot;)?;
+
+    let config = Config::builder()
+        .appender(Appender::builder().build(&quot;logfile&quot;, Box::new(logfile)))
+        .build(Root::builder()
+                   .appender(&quot;logfile&quot;)
+                   .build(LevelFilter::Info))?;
+
+    log4rs::init_config(config)?;
+
+    log::info!(&quot;Hello, world!&quot;);
+
+    Ok(())
+}
+
+</code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="版本号"><a class="header" href="#版本号">版本号</a></h1>
+<h3 id="解析并增加版本号"><a class="header" href="#解析并增加版本号">解析并增加版本号</a></h3>
+<p>下面例子使用 <a href="https://docs.rs/semver/*/semver/struct.Version.html#method.parse">Version::parse</a> 将一个字符串转换成 <a href="https://docs.rs/semver/*/semver/struct.Version.html">semver::Version</a> 版本号，然后将它的 patch, minor, major 版本号都增加 1。</p>
+<p>注意，为了符合<a href="http://semver.org">语义化版本的说明</a>，增加 <code>minor</code> 版本时，<code>patch</code> 版本会被重设为 <code>0</code>，当增加 <code>major</code> 版本时，<code>minor</code> 和 <code>patch</code> 都将被重设为 <code>0</code>。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use semver::{Version, SemVerError};
+
+fn main() -&gt; Result&lt;(), SemVerError&gt; {
+    let mut parsed_version = Version::parse(&quot;0.2.6&quot;)?;
+
+    assert_eq!(
+        parsed_version,
+        Version {
+            major: 0,
+            minor: 2,
+            patch: 6,
+            pre: vec![],
+            build: vec![],
+        }
+    );
+
+    parsed_version.increment_patch();
+    assert_eq!(parsed_version.to_string(), &quot;0.2.7&quot;);
+    println!(&quot;New patch release: v{}&quot;, parsed_version);
+
+    parsed_version.increment_minor();
+    assert_eq!(parsed_version.to_string(), &quot;0.3.0&quot;);
+    println!(&quot;New minor release: v{}&quot;, parsed_version);
+
+    parsed_version.increment_major();
+    assert_eq!(parsed_version.to_string(), &quot;1.0.0&quot;);
+    println!(&quot;New major release: v{}&quot;, parsed_version);
+
+    Ok(())
+}
+</code></pre></pre>
+<h3 id="解析一个复杂的版本号字符串"><a class="header" href="#解析一个复杂的版本号字符串">解析一个复杂的版本号字符串</a></h3>
+<p>这里的版本号字符串还将包含 <code>SemVer</code> 中定义的预发布和构建元信息。</p>
+<p>值得注意的是，为了符合 <code>SemVer</code> 的规则，构建元信息虽然会被解析，但是在做版本号比较时，该信息会被忽略。换而言之，即使两个版本号的构建字符串不同，它们的版本号依然可能相同。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use semver::{Identifier, Version, SemVerError};
+
+fn main() -&gt; Result&lt;(), SemVerError&gt; {
+    let version_str = &quot;1.0.49-125+g72ee7853&quot;;
+    let parsed_version = Version::parse(version_str)?;
+
+    assert_eq!(
+        parsed_version,
+        Version {
+            major: 1,
+            minor: 0,
+            patch: 49,
+            pre: vec![Identifier::Numeric(125)],
+            build: vec![],
+        }
+    );
+    assert_eq!(
+        parsed_version.build,
+        vec![Identifier::AlphaNumeric(String::from(&quot;g72ee7853&quot;))]
+    );
+
+    let serialized_version = parsed_version.to_string();
+    assert_eq!(&amp;serialized_version, version_str);
+
+    Ok(())
+}
+</code></pre></pre>
+<h3 id="检查给定的版本号是否是预发布"><a class="header" href="#检查给定的版本号是否是预发布">检查给定的版本号是否是预发布</a></h3>
+<p>下面例子给出两个版本号，然后通过 <a href="https://docs.rs/semver/1.0.7/semver/struct.Version.html#method.is_prerelease">is_prerelease</a> 判断哪个是预发布的版本号。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021">use semver::{Version, SemVerError};
+
+fn main() -&gt; Result&lt;(), SemVerError&gt; {
+    let version_1 = Version::parse(&quot;1.0.0-alpha&quot;)?;
+    let version_2 = Version::parse(&quot;1.0.0&quot;)?;
+
+    assert!(version_1.is_prerelease());
+    assert!(!version_2.is_prerelease());
+
+    Ok(())
+}
+</code></pre></pre>
+<h3 id="找出给定范围内的最新版本"><a class="header" href="#找出给定范围内的最新版本">找出给定范围内的最新版本</a></h3>
+<p>下面例子给出了一个版本号列表，我们需要找到其中最新的版本。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021"><span class="boring">use error_chain::error_chain;
+</span>
+use semver::{Version, VersionReq};
+
+<span class="boring">error_chain! {
+</span><span class="boring">   foreign_links {
+</span><span class="boring">       SemVer(semver::SemVerError);
+</span><span class="boring">       SemVerReq(semver::ReqParseError);
+</span><span class="boring">   }
+</span>3}
+
+fn find_max_matching_version&lt;'a, I&gt;(version_req_str: &amp;str, iterable: I) -&gt; Result&lt;Option&lt;Version&gt;&gt;
+where
+    I: IntoIterator&lt;Item = &amp;'a str&gt;,
+{
+    let vreq = VersionReq::parse(version_req_str)?;
+
+    Ok(
+        iterable
+            .into_iter()
+            .filter_map(|s| Version::parse(s).ok())
+            .filter(|s| vreq.matches(s))
+            .max(),
+    )
+}
+
+fn main() -&gt; Result&lt;()&gt; {
+    assert_eq!(
+        find_max_matching_version(&quot;&lt;= 1.0.0&quot;, vec![&quot;0.9.0&quot;, &quot;1.0.0&quot;, &quot;1.0.1&quot;])?,
+        Some(Version::parse(&quot;1.0.0&quot;)?)
+    );
+
+    assert_eq!(
+        find_max_matching_version(
+            &quot;&gt;1.2.3-alpha.3&quot;,
+            vec![
+                &quot;1.2.3-alpha.3&quot;,
+                &quot;1.2.3-alpha.4&quot;,
+                &quot;1.2.3-alpha.10&quot;,
+                &quot;1.2.3-beta.4&quot;,
+                &quot;3.4.5-alpha.9&quot;,
+            ]
+        )?,
+        Some(Version::parse(&quot;1.2.3-beta.4&quot;)?)
+    );
+
+    Ok(())
+}
+</code></pre></pre>
+<h3 id="检查外部命令的版本号兼容性"><a class="header" href="#检查外部命令的版本号兼容性">检查外部命令的版本号兼容性</a></h3>
+<p>下面将通过 <a href="https://doc.rust-lang.org/std/process/struct.Command.html">Command</a> 来执行系统命令 <code>git --version</code>，并对该系统命令返回的 <code>git</code> 版本号进行解析。</p>
+<pre><pre class="playground"><code class="language-rust editable edition2021"><span class="boring">use error_chain::error_chain;
+</span>
+use std::process::Command;
+use semver::{Version, VersionReq};
+
+<span class="boring">error_chain! {
+</span><span class="boring">   foreign_links {
+</span><span class="boring">       Io(std::io::Error);
+</span><span class="boring">       Utf8(std::string::FromUtf8Error);
+</span><span class="boring">       SemVer(semver::SemVerError);
+</span><span class="boring">       SemVerReq(semver::ReqParseError);
+</span><span class="boring">   }
+</span><span class="boring">}
+</span>
+fn main() -&gt; Result&lt;()&gt; {
+    let version_constraint = &quot;&gt; 1.12.0&quot;;
+    let version_test = VersionReq::parse(version_constraint)?;
+    let output = Command::new(&quot;git&quot;).arg(&quot;--version&quot;).output()?;
+
+    if !output.status.success() {
+        error_chain::bail!(&quot;Command executed with failing error code&quot;);
+    }
+
+    let stdout = String::from_utf8(output.stdout)?;
+    let version = stdout.split(&quot; &quot;).last().ok_or_else(|| {
+        &quot;Invalid command output&quot;
+    })?;
+    let parsed_version = Version::parse(version)?;
+
+    if !version_test.matches(&amp;parsed_version) {
+        error_chain::bail!(&quot;Command version lower than minimum supported version (found {}, need {})&quot;,
+            parsed_version, version_constraint);
+    }
+
+    Ok(())
+}
+</code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="构建时工具"><a class="header" href="#构建时工具">构建时工具</a></h1>
+<p>本章节的内容是关于构建工具的，如果大家没有听说过 <code>build.rs</code> 文件，强烈建议先看看<a href="https://course.rs/cargo/reference/build-script/intro.html">这里</a>了解下何为构建工具。</p>
+<h3 id="编译并静态链接一个-c-库"><a class="header" href="#编译并静态链接一个-c-库">编译并静态链接一个 C 库</a></h3>
+<p><a href="https://docs.rs/cc/latest/cc/">cc</a> 包能帮助我们更好地跟 C/C++/汇编进行交互：它提供了简单的 API 可以将外部的库编译成静态库( .a )，然后通过 <code>rustc</code> 进行静态链接。</p>
+<p>下面的例子中，我们将在 Rust 代码中使用 C 的代码: <em>src/hello.c</em>。在开始编译 Rust 的项目代码前，<code>build.rs</code> 构建脚本将先被执行。通过 cc 包，一个静态的库可以被生成( <em>libhello.a</em> ),然后该库将被 Rust的代码所使用：通过 <code>extern</code> 声明外部函数签名的方式来使用。</p>
+<p>由于例子中的 C 代码很简单，因此只需要将一个文件传递给 <a href="https://docs.rs/cc/*/cc/struct.Build.html">cc::Build</a>。如果大家需要更复杂的构建，<code>cc::Build</code> 还提供了通过 <a href="https://docs.rs/cc/*/cc/struct.Build.html#method.include">include</a> 来包含路径的方式，以及额外的编译标志( <a href="https://docs.rs/cc/1.0.73/cc/struct.Build.html#method.flag">flags</a> )。</p>
+<p><em>Cargo.toml</em></p>
+<pre><code class="language-toml">[package]
+...
+build = &quot;build.rs&quot;
+
+[build-dependencies]
+cc = &quot;1&quot;
+
+[dependencies]
+error-chain = &quot;0.11&quot;
+</code></pre>
+<p><em>build.rs</em></p>
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
+    cc::Build::new()
+        .file(&quot;src/hello.c&quot;)
+        .compile(&quot;hello&quot;);   // outputs `libhello.a`
+}
+</code></pre></pre>
+<p><em>src/hello.c</em></p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+
+void hello() {
+    printf(&quot;Hello from C!\n&quot;);
+}
+
+void greet(const char* name) {
+    printf(&quot;Hello, %s!\n&quot;, name);
+}
+</code></pre>
+<p><em>src/main.rs</em></p>
+<pre><pre class="playground"><code class="language-rust edition2021">use error_chain::error_chain;
+use std::ffi::CString;
+use std::os::raw::c_char;
+
+error_chain! {
+    foreign_links {
+        NulError(::std::ffi::NulError);
+        Io(::std::io::Error);
+    }
+}
+fn prompt(s: &amp;str) -&gt; Result&lt;String&gt; {
+    use std::io::Write;
+    print!(&quot;{}&quot;, s);
+    std::io::stdout().flush()?;
+    let mut input = String::new();
+    std::io::stdin().read_line(&amp;mut input)?;
+    Ok(input.trim().to_string())
+}
+
+extern {
+    fn hello();
+    fn greet(name: *const c_char);
+}
+
+fn main() -&gt; Result&lt;()&gt; {
+    unsafe { hello() }
+    let name = prompt(&quot;What's your name? &quot;)?;
+    let c_name = CString::new(name)?;
+    unsafe { greet(c_name.as_ptr()) }
+    Ok(())
+}
+</code></pre></pre>
+<h3 id="编译并静态链接一个-c-库-1"><a class="header" href="#编译并静态链接一个-c-库-1">编译并静态链接一个 C++ 库</a></h3>
+<p>链接到 C++ 库跟之前的方式非常相似。主要的区别在于链接到 C++ 库时，你需要通过构建方法 <a href="https://docs.rs/cc/*/cc/struct.Build.html#method.cpp">cpp(true)</a> 来指定一个 C++ 编译器，然后在 C++ 的代码顶部添加 <code>extern &quot;C&quot;</code> 来阻止 C++ 编译器对库名进行名称重整( name mangling )。</p>
+<p><em>Cargo.toml</em></p>
+<pre><code class="language-toml">[package]
+...
+build = &quot;build.rs&quot;
+
+[build-dependencies]
+cc = &quot;1&quot;
+</code></pre>
+<p><em>build.rs</em></p>
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
+    cc::Build::new()
+        .cpp(true)
+        .file(&quot;src/foo.cpp&quot;)
+        .compile(&quot;foo&quot;);   
+}
+</code></pre></pre>
+<p><em>src/foo.cpp</em></p>
+<pre><code class="language-c++">extern &quot;C&quot; {
+    int multiply(int x, int y);
+}
+
+int multiply(int x, int y) {
+    return x*y;
+}
+</code></pre>
+<p><em>src/main.rs</em></p>
+<pre><pre class="playground"><code class="language-rust edition2021">extern {
+    fn multiply(x : i32, y : i32) -&gt; i32;
+}
+
+fn main(){
+    unsafe {
+        println!(&quot;{}&quot;, multiply(5,7));
+    }   
+}
+</code></pre></pre>
+<h3 id="为-c-库创建自定义的-define"><a class="header" href="#为-c-库创建自定义的-define">为 C 库创建自定义的 define</a></h3>
+<p><a href="https://docs.rs/cc/*/cc/struct.Build.html#method.define">cc::Build::define</a> 可以让我们使用自定义的 define 来构建 C 库。</p>
+<p>以下示例在构建脚本 <code>build.rs</code> 中动态定义了一个 define，然后在运行时打印出 <strong>Welcome to foo - version 1.0.2</strong>。Cargo 会设置一些<a href="https://doc.rust-lang.org/cargo/reference/environment-variables.html">环境变量</a>，它们对于自定义的 define 会有所帮助。</p>
+<p><em>Cargo.toml</em></p>
+<pre><code class="language-toml">[package]
+...
+version = &quot;1.0.2&quot;
+build = &quot;build.rs&quot;
+
+[build-dependencies]
+cc = &quot;1&quot;
+</code></pre>
+<p><em>build.rs</em></p>
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
+    cc::Build::new()
+        .define(&quot;APP_NAME&quot;, &quot;\&quot;foo\&quot;&quot;)
+        .define(&quot;VERSION&quot;, format!(&quot;\&quot;{}\&quot;&quot;, env!(&quot;CARGO_PKG_VERSION&quot;)).as_str())
+        .define(&quot;WELCOME&quot;, None)
+        .file(&quot;src/foo.c&quot;)
+        .compile(&quot;foo&quot;);
+}
+</code></pre></pre>
+<p><em>src/foo.c</em></p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+void print_app_info() {
+#ifdef WELCOME
+    printf(&quot;Welcome to &quot;);
+#endif
+    printf(&quot;%s - version %s\n&quot;, APP_NAME, VERSION);
+}
+</code></pre>
+<p><em>src/main.rs</em></p>
+<pre><pre class="playground"><code class="language-rust edition2021">extern {
+    fn print_app_info();
+}
+
+fn main(){
+    unsafe {
+        print_app_info();
+    }   
+}
+</code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="字符集"><a class="header" href="#字符集">字符集</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="csv"><a class="header" href="#csv">CSV</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="结构化数据"><a class="header" href="#结构化数据">结构化数据</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="error-chain"><a class="header" href="#error-chain">error-chain</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="读写"><a class="header" href="#读写">读写</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="目录"><a class="header" href="#目录">目录</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="处理器"><a class="header" href="#处理器">处理器</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="全局变量"><a class="header" href="#全局变量">全局变量</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="tcpip"><a class="header" href="#tcpip">TCP/IP</a></h1>
+
+                        <div id="giscus-container"></div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" charset="utf-8">
+        var pagePath = "print.md"
+        </script>
+
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="assets/custom.js"></script>
+        <script type="text/javascript" src="assets/bigPicture.js"></script>
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>
