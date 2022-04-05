@@ -6,15 +6,8 @@
    
 <div align="center">
 
-[![Stars Count](https://img.shields.io/github/stars/sunface/rust-course?style=flat)](https://github.com/sunface/rust-course/stargazers) [![Forks Count](https://img.shields.io/github/forks/sunface/rust-course.svg?style=flat)](https://github.com/sunface/rust-course/graphs/contributors)
-<a href="https://www.zhihu.com/column/c_1452781034895446017">
-  <img alt="Sunface | 知乎" height="20px" width="20px" src="https://github.com/sunface/rust-course/blob/main/assets/zhihu.jpg">
-</a>
     
-    
-在线阅读: https://course.rs
-    
-学习社区: https://studyrust.org
+在线阅读: https://cookbook.rs
 </div>
 
 对于开发者而言，CookBook 是非常实用的，几乎每一门编程语言都是如此。原因无他：聪明的开发者大部分时间不是在复制粘贴就是在复制粘贴的路上。而 CookBook 恰恰为各种实用场景提供了可供直接复制粘贴的代码，例如文件操作、随机数生成、命令行解析等等，
