@@ -29,7 +29,7 @@
   - [版本号](devtools/version.md)
   - [构建时工具](devtools/build-tools.md)
 - [编解码]()
-  - [字符集](encoding/strings.md)
+  - [字符编码](encoding/strings.md)
   - [CSV](encoding/csv.md)
   - [结构化数据](encoding/structured.md)
 - [错误处理]()

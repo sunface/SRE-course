@@ -1,4 +1,4 @@
-# 字符集
+# 字符编码
 
 ### 百分号编码( Percent encoding )
 [百分号编码](https://en.wikipedia.org/wiki/Percent-encoding)又称 URL 编码。
