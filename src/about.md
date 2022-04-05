@@ -1,5 +1,5 @@
 # Rust Cookbook
-<img src="https://github.com/sunface/rust-cookbook/blob/main/assets/banner.png?raw=true" />
+<img src="https://github.com/sunface/rust-cookbook/blob/main/assets/banner1.png?raw=true" />
 
 每个同学可能都遇到过以下疑惑:
 

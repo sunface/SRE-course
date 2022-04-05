@@ -1,7 +1,7 @@
 <h1 align="center">Rust Cookbook</h1>
 
 <div align="center">
-    <img src="https://github.com/sunface/rust-cookbook/blob/main/assets/banner.png?raw=true">
+    <img src="https://github.com/sunface/rust-cookbook/blob/main/assets/banner1.png?raw=true">
 </div>
    
 <div align="center">
