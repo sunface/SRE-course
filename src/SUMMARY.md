@@ -1,6 +1,6 @@
 # Summary
 
-- [Rust Cookbook](cookbook.md)
+- [Rust Cookbook](about.md)
 - [实用算法](algos/intro.md)
     - [生成随机值](algos/randomness.md)
     - [Vec 排序](algos/sorting.md)
